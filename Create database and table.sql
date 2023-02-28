@@ -1,7 +1,7 @@
 
 -- Create the HolaFood database
 CREATE DATABASE HolaFood;
-
+GO
 -- Switch to the HolaFood database
 USE HolaFood;
 
