@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/sqljdbc42.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jakarta.servlet.jsp.jstl-api-2.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jakarta.mail-1.6.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jakarta.servlet.jsp.jstl-2.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-io-2.11.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-fileupload-1.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

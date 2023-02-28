@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Mail-Libraries">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/Mail-Libraries/slf4j-api-1.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Mail-Libraries/javax.servlet-api-4.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Mail-Libraries/activation-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Mail-Libraries/mail-1.4.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Mail-Libraries/simple-java-mail-1.8.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
