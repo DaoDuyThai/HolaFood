@@ -249,3 +249,7 @@ body {
     width: 500px;
   }
 }
+
+.form__button{
+  cursor: pointer;
+}
