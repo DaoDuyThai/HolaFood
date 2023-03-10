@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -59,6 +60,7 @@
                         </div><span class="form__span">or use your email account</span>
                         <input class="form__input" type="text" placeholder="Username" name="username">
                         <input class="form__input" type="password" placeholder="Password" name="password">
+                        <h3 style="color: red">${requestScope.error}</h3>
                         <a class="form__link">Forgot your password?</a>
                         <button class="form__button button submit" type="submit">SIGN IN</button>
                     </form>
@@ -67,12 +69,12 @@
                     <div class="switch__circle"></div>
                     <div class="switch__circle switch__circle--t"></div>
                     <div class="switch__container" id="switch-c1">
-                        <h2 class="switch__title title">Welcome Back !</h2>
+                        <h2 class="switch__title title">Welcome Back!</h2>
                         <p class="switch__description description">To keep connected with us please login with your personal info</p>
                         <button class="switch__button button switch-btn">SIGN IN</button>
                     </div>
                     <div class="switch__container is-hidden" id="switch-c2">
-                        <h2 class="switch__title title">Hello Friend !</h2>
+                        <h2 class="switch__title title">Hello Friend!</h2>
                         <p class="switch__description description">Enter your personal details and start journey with us</p>
                         <button class="switch__button button switch-btn">SIGN UP</button>
                     </div>

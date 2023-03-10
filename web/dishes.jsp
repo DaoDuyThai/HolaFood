@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -131,12 +132,12 @@
                             <div class="navbar-nav mr-auto py-0">
                                 <a href="home.jsp" class="nav-item nav-link">Home</a>
                                 <a href="aboutus.html" class="nav-item nav-link">About Us</a>
-                                <a href="discover.jsp" class="nav-item nav-link">Discover</a>
+                                <a href="discover" class="nav-item nav-link">Discover</a>
                                 <div class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Available</a>
                                     <div class="dropdown-menu rounded-0 m-0">
-                                        <a href="restaurants.jsp" class="dropdown-item">Restaurants</a>
-                                        <a href="dishes.jsp" class="dropdown-item">Dishes</a>
+                                        <a href="restaurants" class="dropdown-item">Restaurants</a>
+                                        <a href="dishes" class="dropdown-item">Dishes</a>
                                     </div>
                                 </div>
                                 <a href="contact.html" class="nav-item nav-link">Contact</a>
@@ -167,191 +168,61 @@
         <!-- Page Header End -->
 
 
-        <!-- Checkout Start -->
-        <div class="container-fluid pt-5">
-            <div class="row px-xl-5">
-                <div class="col-lg-8">
-                    <div class="mb-4">
-                        <h4 class="font-weight-semi-bold mb-4">Billing Address</h4>
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <label>First Name</label>
-                                <input class="form-control" type="text" placeholder="John">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>Last Name</label>
-                                <input class="form-control" type="text" placeholder="Doe">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>E-mail</label>
-                                <input class="form-control" type="text" placeholder="example@email.com">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>Mobile No</label>
-                                <input class="form-control" type="text" placeholder="+123 456 789">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>Address Line 1</label>
-                                <input class="form-control" type="text" placeholder="123 Street">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>Address Line 2</label>
-                                <input class="form-control" type="text" placeholder="123 Street">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>Country</label>
-                                <select class="custom-select">
-                                    <option selected>United States</option>
-                                    <option>Afghanistan</option>
-                                    <option>Albania</option>
-                                    <option>Algeria</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>City</label>
-                                <input class="form-control" type="text" placeholder="New York">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>State</label>
-                                <input class="form-control" type="text" placeholder="New York">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>ZIP Code</label>
-                                <input class="form-control" type="text" placeholder="123">
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="newaccount">
-                                    <label class="custom-control-label" for="newaccount">Create an account</label>
-                                </div>
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="shipto">
-                                    <label class="custom-control-label" for="shipto"  data-toggle="collapse" data-target="#shipping-address">Ship to different address</label>
+        <!-- Shop Product Start -->
+
+                <div class="col-lg-9 col-md-12">
+                    <div class="row pb-3">
+                        <div class="col-12 pb-1">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <form action="">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Search by name">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text bg-transparent text-primary">
+                                                <i class="fa fa-search"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="dropdown ml-4">
+                                    <button class="btn border dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                        Sort by
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
+                                        <a class="dropdown-item" href="#">Latest</a>
+                                        <a class="dropdown-item" href="#">Popularity</a>
+                                        <a class="dropdown-item" href="#">Best Rating</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="collapse mb-4" id="shipping-address">
-                        <h4 class="font-weight-semi-bold mb-4">Shipping Address</h4>
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <label>First Name</label>
-                                <input class="form-control" type="text" placeholder="John">
+
+
+                        <c:forEach items="${listMenuItems}" var="o">
+                            <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                                <div class="card product-item border-0 mb-4">
+                                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                        <img class="img-fluid w-100" src="assets/menuItems_image/${o.item_image}" alt="">
+                                    </div>
+                                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                        <h6 class="text-truncate mb-3">${o.name}</h6>
+                                        <div class="d-flex justify-content-center">
+                                            <h6 class="text-muted ml-2"><del>${o.price}</del></h6>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-between bg-light border">
+                                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-6 form-group">
-                                <label>Last Name</label>
-                                <input class="form-control" type="text" placeholder="Doe">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>E-mail</label>
-                                <input class="form-control" type="text" placeholder="example@email.com">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>Mobile No</label>
-                                <input class="form-control" type="text" placeholder="+123 456 789">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>Address Line 1</label>
-                                <input class="form-control" type="text" placeholder="123 Street">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>Address Line 2</label>
-                                <input class="form-control" type="text" placeholder="123 Street">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>Country</label>
-                                <select class="custom-select">
-                                    <option selected>United States</option>
-                                    <option>Afghanistan</option>
-                                    <option>Albania</option>
-                                    <option>Algeria</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>City</label>
-                                <input class="form-control" type="text" placeholder="New York">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>State</label>
-                                <input class="form-control" type="text" placeholder="New York">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>ZIP Code</label>
-                                <input class="form-control" type="text" placeholder="123">
-                            </div>
-                        </div>
+                        </c:forEach>
+
+                       
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="card border-secondary mb-5">
-                        <div class="card-header bg-secondary border-0">
-                            <h4 class="font-weight-semi-bold m-0">Order Total</h4>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="font-weight-medium mb-3">Products</h5>
-                            <div class="d-flex justify-content-between">
-                                <p>Colorful Stylish Shirt 1</p>
-                                <p>$150</p>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <p>Colorful Stylish Shirt 2</p>
-                                <p>$150</p>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <p>Colorful Stylish Shirt 3</p>
-                                <p>$150</p>
-                            </div>
-                            <hr class="mt-0">
-                            <div class="d-flex justify-content-between mb-3 pt-1">
-                                <h6 class="font-weight-medium">Subtotal</h6>
-                                <h6 class="font-weight-medium">$150</h6>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <h6 class="font-weight-medium">Shipping</h6>
-                                <h6 class="font-weight-medium">$10</h6>
-                            </div>
-                        </div>
-                        <div class="card-footer border-secondary bg-transparent">
-                            <div class="d-flex justify-content-between mt-2">
-                                <h5 class="font-weight-bold">Total</h5>
-                                <h5 class="font-weight-bold">$160</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card border-secondary mb-5">
-                        <div class="card-header bg-secondary border-0">
-                            <h4 class="font-weight-semi-bold m-0">Payment</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" name="payment" id="paypal">
-                                    <label class="custom-control-label" for="paypal">Paypal</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" name="payment" id="directcheck">
-                                    <label class="custom-control-label" for="directcheck">Direct Check</label>
-                                </div>
-                            </div>
-                            <div class="">
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" name="payment" id="banktransfer">
-                                    <label class="custom-control-label" for="banktransfer">Bank Transfer</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer border-secondary bg-transparent">
-                            <button class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3">Place Order</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Checkout End -->
+                 <!-- Shop Product End -->
 
 
         <!-- Footer Start -->
@@ -374,9 +245,9 @@
                             <div class="d-flex flex-column justify-content-start">
                                 <a class="text-dark mb-2" href="home.jsp"><i class="fa fa-angle-right mr-2"></i>Home</a>
                                 <a class="text-dark mb-2" href="aboutus.html"><i class="fa fa-angle-right mr-2"></i>About Us</a>
-                                <a class="text-dark mb-2" href="discover.jsp"><i class="fa fa-angle-right mr-2"></i>Discover</a>
-                                <a class="text-dark mb-2" href="restaurants.jsp"><i class="fa fa-angle-right mr-2"></i>Restaurants</a>
-                                <a class="text-dark mb-2" href="dishes.jsp"><i
+                                <a class="text-dark mb-2" href="discover"><i class="fa fa-angle-right mr-2"></i>Discover</a>
+                                <a class="text-dark mb-2" href="restaurants"><i class="fa fa-angle-right mr-2"></i>Restaurants</a>
+                                <a class="text-dark mb-2" href="dishes"><i
                                         class="fa fa-angle-right mr-2"></i>Dishes</a>
                                 <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contact
                                     Us</a>
@@ -387,9 +258,9 @@
                             <div class="d-flex flex-column justify-content-start">
                                 <a class="text-dark mb-2" href="home.jsp"><i class="fa fa-angle-right mr-2"></i>Home</a>
                                 <a class="text-dark mb-2" href="aboutus.html"><i class="fa fa-angle-right mr-2"></i>About Us</a>
-                                <a class="text-dark mb-2" href="discover.jsp"><i class="fa fa-angle-right mr-2"></i>Discover</a>
-                                <a class="text-dark mb-2" href="restaurants.jsp"><i class="fa fa-angle-right mr-2"></i>Restaurants</a>
-                                <a class="text-dark mb-2" href="dishes.jsp"><i
+                                <a class="text-dark mb-2" href="discover"><i class="fa fa-angle-right mr-2"></i>Discover</a>
+                                <a class="text-dark mb-2" href="restaurants"><i class="fa fa-angle-right mr-2"></i>Restaurants</a>
+                                <a class="text-dark mb-2" href="dishes"><i
                                         class="fa fa-angle-right mr-2"></i>Dishes</a>
                                 <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contact
                                     Us</a>

@@ -85,6 +85,12 @@ public class Restaurants {
     public void setOwner_id(int owner_id) {
         this.owner_id = owner_id;
     }
+
+    @Override
+    public String toString() {
+        return "Restaurants{" + "restaurant_id=" + restaurant_id + ", name=" + name + ", description=" + description + ", restaurant_image=" + restaurant_image + ", address=" + address + ", phone_number=" + phone_number + ", owner_id=" + owner_id + '}';
+    }
+    
     
     
 }

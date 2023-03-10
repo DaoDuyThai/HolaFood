@@ -85,5 +85,11 @@ public class MenuItems {
     public void setRestaurant_id(int restaurant_id) {
         this.restaurant_id = restaurant_id;
     }
+
+    @Override
+    public String toString() {
+        return "MenuItems{" + "menu_item_id=" + menu_item_id + ", name=" + name + ", description=" + description + ", item_image=" + item_image + ", price=" + price + ", category_id=" + category_id + ", restaurant_id=" + restaurant_id + '}';
+    }
+    
     
 }
