@@ -39,7 +39,7 @@
                     </a>
                     <a class="text-dark pl-2" href=""></a>
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="login.jsp" class="loginButton nav-item nav-link">Sign up/Login</a>
+                        <a href="<%=request.getContextPath()%>/logout" class="loginButton nav-item nav-link">${users.name}</a>
                     </div>
                 </div>
             </div>

@@ -33,8 +33,15 @@
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
+        <c:set var="users" value="${requestScope.users}"/>
+        <c:if test="${not empty users.name}">
+            <%@include file="logoutheader.jsp" %>
+        </c:if>
+        <c:if test="${empty users.name}">
+            <%@include file="loginheader.jsp" %>
+        </c:if>
         
-        <%@include file="loginheader.jsp" %>
+        
 
 
         <!-- Navbar Start -->
