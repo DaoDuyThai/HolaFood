@@ -1,6 +1,6 @@
-<%-- 
-    Document   : dishes
-    Created on : Mar 3, 2023, 7:55:56 AM
+<%--
+    Document   : discover
+    Created on : Mar 3, 2023, 7:55:22 AM
     Author     : Duy Thai
 --%>
 
@@ -10,11 +10,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
         <meta charset="utf-8">
-        <title>Dishes</title>
+        <title>Discover</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="Dishes" name="keywords">
-        <meta content="Dishes" name="description">
+        <meta content="Discover" name="keywords">
+        <meta content="Discover" name="description">
 
         <!-- Favicon -->
         <link href="img/favicon.ico" rel="icon">
@@ -33,7 +34,69 @@
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-        <%@include file="loginheader.jsp" %>
+        <!-- Topbar Start -->
+        <div class="container-fluid">
+            <div class="row bg-secondary py-2 px-xl-5">
+                <div class="col-lg-6 d-none d-lg-block">
+                    <div class="d-inline-flex align-items-center">
+                        <a class="text-dark" href="">FAQs</a>
+                        <span class="text-muted px-2">|</span>
+                        <a class="text-dark" href="">Help</a>
+                        <span class="text-muted px-2">|</span>
+                        <a class="text-dark" href="">Support</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center text-lg-right">
+                    <div class="d-inline-flex align-items-center">
+                        <a class="text-dark px-2" href="">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a class="text-dark px-2" href="">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a class="text-dark px-2" href="">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a class="text-dark px-2" href="">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a class="text-dark pl-2" href="">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center py-3 px-xl-5">
+                <div class="col-lg-3 d-none d-lg-block">
+                    <a href="" class="text-decoration-none">
+                        <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">Hola</span>Food</h1>
+                    </a>
+                </div>
+                <div class="col-lg-6 col-6 text-left">
+                    <form action="">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Tìm kiếm món ăn, đồ uống, nhà hàng...">
+                            <div class="input-group-append">
+                                <span class="input-group-text bg-transparent text-primary">
+                                    <button class="searchicon" type = "submit">Search</button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-3 col-6 text-right">
+                    <a href="" class="btn border">
+                        <i class="fas fa-heart text-primary"></i>
+                        <span class="badge">0</span>
+                    </a>
+                    <a href="" class="btn border">
+                        <i class="fas fa-shopping-cart text-primary"></i>
+                        <span class="badge">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Topbar End -->
 
 
         <!-- Navbar Start -->
@@ -46,9 +109,15 @@
                     </a>
                     <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 1;">
                         <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
-                            <c:forEach items="${listMenuCategories}" var="lmc">
-                                <a href="" class="nav-item nav-link">${lmc.name}</a>
-                            </c:forEach>
+                            <a href="" class="nav-item nav-link">Cơm hộp</a>
+                            <a href="" class="nav-item nav-link">Đồ ăn khác</a>
+                            <a href="" class="nav-item nav-link">Đồ ăn vặt</a>
+                            <a href="" class="nav-item nav-link">Đồ uống</a>
+                            <a href="" class="nav-item nav-link">Tráng miệng</a>
+                            <a href="" class="nav-item nav-link">Homemade</a>
+                            <a href="" class="nav-item nav-link">Vỉa hè</a>
+                            <a href="" class="nav-item nav-link">Pizza</a>
+                            <a href="" class="nav-item nav-link">Burger</a>
                         </div>
                     </nav>
                 </div>
@@ -64,9 +133,9 @@
                             <div class="navbar-nav mr-auto py-0">
                                 <a href="home" class="nav-item nav-link">Home</a>
                                 <a href="aboutus.jsp" class="nav-item nav-link">About Us</a>
-                                <a href="discover" class="nav-item nav-link">Discover</a>
+                                <a href="discover" class="nav-item nav-link active">Discover</a>
                                 <div class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Available</a>
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Available</a>
                                     <div class="dropdown-menu rounded-0 m-0">
                                         <a href="restaurants" class="dropdown-item">Restaurants</a>
                                         <a href="dishes" class="dropdown-item">Dishes</a>
@@ -74,10 +143,7 @@
                                 </div>
                                 <a href="contact.jsp" class="nav-item nav-link">Contact</a>
                             </div>
-                             <%-- <div class="navbar-nav ml-auto py-0">
-                                <a href="login.jsp" class="loginButton nav-item nav-link">Sign up/Login</a>
-
-                            </div> --%>
+                            
                         </div>
                     </nav>
                 </div>
@@ -85,97 +151,19 @@
         </div>
         <!-- Navbar End -->
 
+        <%-- view product start --%>
+        <div class="container">
+            <h1>Product Name  </h1>
+            <img src="product-image.jpg" alt="Product Image">
+            <p class="description">Product Description</p>
+            <p class="price">Price: $9.99</p>
+            <p class="category">Category: Food</p>
+            <p class="restaurant">Restaurant: Restaurant Name</p>
+        </div>
 
-        <!-- Page Header Start -->
-        
-            <div class="text-center mb-4">
-                        <h2 class="section-title px-5"><span class="px-2">Dishes</span></h2>
-                    </div>
-        
-        <!-- Page Header End -->
-
-
-        <!-- Shop Product Start -->
-
-                 
-                <center>
-                    
-                <div class="col-lg-9 col-md-12">
-                    <div class="row pb-3">
-                        <div class="col-12 pb-1">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <form action="">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Search by name">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text bg-transparent text-primary">
-                                                <i class="fa fa-search"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </form>
-                                <div class="dropdown ml-4">
-                                    <button class="btn border dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">
-                                        Sort by
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
-                                        <a class="dropdown-item" href="#">Latest</a>
-                                        <a class="dropdown-item" href="#">Popularity</a>
-                                        <a class="dropdown-item" href="#">Best Rating</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <%-- view product end --%>
 
 
-                        <c:forEach items="${listMenuItems}" var="o">
-                            <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
-                                <div class="card product-item border-0 mb-4">
-                                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                                        <img class="img-fluid w-100" src="assets/menuItems_image/${o.item_image}" alt="">
-                                    </div>
-                                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                        <h6 class="text-truncate mb-3">${o.name}</h6>
-                                        <div class="d-flex justify-content-center">
-                                            <h6>${o.price}</h6>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer d-flex justify-content-between bg-light border">
-                                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </c:forEach>
-                        <%-- page navigation --%>
-                        <div class="col-12 pb-1">
-                        <nav aria-label="Page navigation">
-                          <ul class="pagination justify-content-center mb-3">
-                            <li class="page-item disabled">
-                              <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                                <span class="sr-only">Previous</span>
-                              </a>
-                            </li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                              <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                                <span class="sr-only">Next</span>
-                              </a>
-                            </li>
-                          </ul>
-                        </nav>
-                    </div>
-                        <%-- page navigation --%>
-                       
-                    </div>
-                </div>
-                </center>
-                <!-- Shop Product End -->
 
 
 
@@ -254,7 +242,6 @@
                 </div>
             </div>
         </div>
-
         <!-- Back to Top -->
         <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 

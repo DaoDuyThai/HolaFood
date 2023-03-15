@@ -5,6 +5,7 @@
 
 package controller;
 
+import dal.MenuCategoriesDAO;
 import dal.MenuItemsDAO;
 import dal.RestaurantsDAO;
 import java.io.IOException;
@@ -15,6 +16,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
+import model.MenuCategories;
 import model.MenuItems;
 import model.Restaurants;
 
@@ -68,6 +70,10 @@ public class restaurantsServlet extends HttpServlet {
         List<Restaurants> listRestaurants = restaurants.getAllRestaurants();
         request.setAttribute("listRestaurants", listRestaurants);
         
+        
+        MenuCategoriesDAO menuCategory = new MenuCategoriesDAO();
+        List<MenuCategories> listMenuCategories = menuCategory.getAllMenuCategories();
+        request.setAttribute("listMenuCategories", listMenuCategories);
         
         request.getRequestDispatcher("restaurants.jsp").forward(request, response);
     } 

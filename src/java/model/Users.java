@@ -85,6 +85,11 @@ public class Users {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    @Override
+    public String toString() {
+        return "Users{" + "user_id=" + user_id + ", userName=" + userName + ", password=" + password + ", name=" + name + ", email=" + email + ", phone_number=" + phone_number + ", address=" + address + '}';
+    }
     
     
     

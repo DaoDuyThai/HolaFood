@@ -1,19 +1,18 @@
 <%-- 
-    Document   : home
-    Created on : Mar 1, 2023, 12:30:58 AM
+    Document   : aboutus
+    Created on : Mar 14, 2023, 11:21:36 PM
     Author     : Duy Thai
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Home Page</title>
+        <meta charset="utf-8">
+        <title>About Us</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="Home Page" name="keywords">
-        <meta content="Home Page" name="description">
+        <meta content="About Us" name="keywords">
+        <meta content="About Us" name="description">
 
         <!-- Favicon -->
         <link href="img/favicon.ico" rel="icon">
@@ -33,12 +32,11 @@
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-        
         <%@include file="loginheader.jsp" %>
 
 
         <!-- Navbar Start -->
-        <div class="container-fluid mb-5">
+        <div class="container-fluid">
             <div class="row border-top px-xl-5">
                 <div class="col-lg-3 d-none d-lg-block">
                     <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100"
@@ -47,12 +45,18 @@
                         <h6 class="m-0">Categories</h6>
                         <i class="fa fa-angle-down text-dark"></i>
                     </a>
-                    <nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0"
-                         id="navbar-vertical">
+                    <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light"
+                         id="navbar-vertical" style="width: calc(100% - 30px); z-index: 1;">
                         <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
-                            <c:forEach items="${listMenuCategories}" var="lmc">
-                                <a href="" class="nav-item nav-link">${lmc.name}</a>
-                            </c:forEach>
+                            <a href="" class="nav-item nav-link">Cơm hộp</a>
+                            <a href="" class="nav-item nav-link">Đồ ăn khác</a>
+                            <a href="" class="nav-item nav-link">Đồ ăn vặt</a>
+                            <a href="" class="nav-item nav-link">Đồ uống</a>
+                            <a href="" class="nav-item nav-link">Tráng miệng</a>
+                            <a href="" class="nav-item nav-link">Homemade</a>
+                            <a href="" class="nav-item nav-link">Vỉa hè</a>
+                            <a href="" class="nav-item nav-link">Pizza</a>
+                            <a href="" class="nav-item nav-link">Burger</a>
                         </div>
                     </nav>
                 </div>
@@ -67,14 +71,14 @@
                         </button>
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                             <div class="navbar-nav mr-auto py-0">
-                                <a href="home" class="nav-item nav-link active">Home</a>
-                                <a href="aboutus.jsp" class="nav-item nav-link">About Us</a>
+                                <a href="home" class="nav-item nav-link">Home</a>
+                                <a href="aboutus.jsp" class="nav-item nav-link active">About Us</a>
                                 <a href="discover" class="nav-item nav-link">Discover</a>
                                 <div class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Available</a>
                                     <div class="dropdown-menu rounded-0 m-0">
-                                        <a href="restaurants" class="dropdown-item">Restaurants</a>
-                                        <a href="dishes" class="dropdown-item">Dishes</a>
+                                        <a href="restaurants" class="dropdown-item">Shopping Cart</a>
+                                        <a href="dishes" class="dropdown-item">Checkout</a>
                                     </div>
                                 </div>
                                 <a href="contact.jsp" class="nav-item nav-link">Contact</a>
@@ -83,147 +87,63 @@
                                 <a href="login.jsp" class="loginButton nav-item nav-link">Sign up/Login</a>
 
                             </div> --%>
+                            
                         </div>
                     </nav>
-                    <div id="header-carousel" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active" style="height: 410px;">
-                                <img class="img-fluid" src="img/carousel-1.jpg" alt="Image">
-                                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                                    <div class="p-3" style="max-width: 700px;">
-                                        <h4 class="text-light text-uppercase font-weight-medium mb-3"GIẢM GIÁ 10% CHO ĐƠN HÀNG ĐẦU TIÊN</h4>
-                                            <h3 class="display-4 text-white font-weight-semi-bold mb-4">Tasty Dishes</h3>
-                                            <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item" style="height: 410px;">
-                                <img class="img-fluid" src="img/carousel-2.jpg" alt="Image">
-                                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                                    <div class="p-3" style="max-width: 700px;">
-                                        <h4 class="text-light text-uppercase font-weight-medium mb-3"GIẢM GIÁ 10% CHO ĐƠN HÀNG ĐẦU TIÊN</h4>
-                                            <h3 class="display-4 text-white font-weight-semi-bold mb-4">Reasonable Price</h3>
-                                            <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
-                            <div class="btn btn-dark" style="width: 45px; height: 45px;">
-                                <span class="carousel-control-prev-icon mb-n2"></span>
-                            </div>
-                        </a>
-                        <a class="carousel-control-next" href="#header-carousel" data-slide="next">
-                            <div class="btn btn-dark" style="width: 45px; height: 45px;">
-                                <span class="carousel-control-next-icon mb-n2"></span>
-                            </div>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
         <!-- Navbar End -->
 
 
-        <!-- Featured Start -->
-        <div class="container-fluid pt-5">
-            <div class="row px-xl-5 pb-3">
-                <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                    <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
-                        <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
-                        <h5 class="font-weight-semi-bold m-0">Quality Product</h5>
-                    </div>
+        <!-- Page Header Start -->
+        <div class="container-fluid bg-secondary mb-5">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+                <h1 class="font-weight-semi-bold text-uppercase mb-3 aboutusheading">ABOUT US</h1>
+                <div class="d-inline-flex">
+
+
+                </div><br>
+                <div class="d-inline-flex aboutustext">
+                    <p class="m-0">Welcome to HolaFood, your go-to destination for ordering delicious food from local
+                        restaurants! We are passionate about food and dedicated to connecting hungry customers with the best
+                        local eateries.</p>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                    <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
-                        <h1 class="fa fa-shipping-fast text-primary m-0 mr-2"></h1>
-                        <h5 class="font-weight-semi-bold m-0">Free Shipping</h5>
-                    </div>
+                <div class="d-inline-flex aboutustext">
+                    <p class="m-0">
+                        Our mission is simple: to provide a fast, easy, and convenient way for customers to order food
+                        online. We believe that everyone deserves access to great food, and that's why we work hard to bring
+                        you a wide range of options from the best local restaurants.</p>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                    <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
-                        <h1 class="fas fa-exchange-alt text-primary m-0 mr-3"></h1>
-                        <h5 class="font-weight-semi-bold m-0">14-Day Return</h5>
-                    </div>
+                <div class="d-inline-flex aboutustext">
+                    <p class="m-0">We understand that everyone has unique tastes and preferences when it comes to food,
+                        which is why we
+                        offer a diverse range of cuisines and menus to choose from. Whether you're in the mood for Italian,
+                        Chinese, Indian, or anything in between, we've got you covered.</p>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                    <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
-                        <h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
-                        <h5 class="font-weight-semi-bold m-0">24/7 Support</h5>
-                    </div>
+                <div class="d-inline-flex aboutustext">
+                    <p class="m-0">Our team is committed to providing excellent customer service, and we're always here to
+                        help with
+                        any questions or concerns you may have. We also strive to ensure that your food arrives fresh, hot,
+                        and on time.</p>
+                </div>
+                <div class="d-inline-flex aboutustext">
+                    <p class="m-0">At HolaFood, we believe in supporting our local community and small businesses.
+                        That's why we
+                        partner with local restaurants to bring you the best food around, while also helping to boost the
+                        local economy.</p>
+                </div>
+                <div class="d-inline-flex aboutustext">
+                    <p class="m-0">Thank you for choosing HolaFood for your food ordering needs. We look forward to
+                        serving you
+                        and helping you discover new, delicious restaurants in your area!</p>
                 </div>
             </div>
         </div>
-        <!-- Featured End -->
+        <!-- Page Header End -->
 
 
-        <!-- Categories Start -->
-        <div class="container-fluid pt-5">
-            <div class="row px-xl-5 pb-3">
-                <div class="col-lg-4 col-md-6 pb-1">
-                    <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                        <p class="text-right">15 MÓN ĂN</p>
-                        <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                            <img class="img-fluid" src="img/cat-1.jpg" alt="">
-                        </a>
-                        <h5 class="font-weight-semi-bold m-0">CƠM HỘP</h5>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 pb-1">
-                    <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                        <p class="text-right">15 MÓN ĂN</p>
-                        <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                            <img class="img-fluid" src="img/cat-2.jpg" alt="">
-                        </a>
-                        <h5 class="font-weight-semi-bold m-0">ĐỒ ĂN KHÁC</h5>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 pb-1">
-                    <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                        <p class="text-right">15 MÓN ĂN</p>
-                        <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                            <img class="img-fluid" src="img/cat-3.jpg" alt="">
-                        </a>
-                        <h5 class="font-weight-semi-bold m-0">ĐỒ ĂN VẶT</h5>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 pb-1">
-                    <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                        <p class="text-right">15 MÓN ĂN</p>
-                        <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                            <img class="img-fluid" src="img/cat-4.jpg" alt="">
-                        </a>
-                        <h5 class="font-weight-semi-bold m-0">ĐỒ UỐNG</h5>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 pb-1">
-                    <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                        <p class="text-right">15 MÓN ĂN</p>
-                        <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                            <img class="img-fluid" src="img/cat-5.jpg" alt="">
-                        </a>
-                        <h5 class="font-weight-semi-bold m-0">TRÁNG MIỆNG</h5>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 pb-1">
-                    <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                        <p class="text-right">15 MÓN ĂN</p>
-                        <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                            <img class="img-fluid" src="img/cat-6.jpg" alt="">
-                        </a>
-                        <h5 class="font-weight-semi-bold m-0">VỈA HÈ</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Categories End -->
-
-
-
-
-
-        <!-- Products Start -->
-
+        <!-- Shop End -->
 
 
 
@@ -302,8 +222,6 @@
                 </div>
             </div>
         </div>
-        <!-- Footer End -->
-
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>

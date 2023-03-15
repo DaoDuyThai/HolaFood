@@ -8,18 +8,18 @@ INSERT INTO [dbo].[Users]
            ,[phone_number]
            ,[address])
      VALUES
-           (N'thai','123456','Duy Thái','dduythai.ddt@gmail.com','079 6428 094','Cốm Saximi, Thôn 9, Tân Xã, Thạch Thất, Hà Nội'),
-		   (N'moclong',	'123','Mộc Long Tân Xã','moclong@gmail.com','0988 948 583','Cổng Trường Hai Bà Trưng, Tân Xã, Thạch Thất, Hanoi, Vietnam'),
-		   (N'huong','123456','Trần Linh Hương','linhhuong@gmail.com','0353 240 623','Cốm Saximi, Thôn 9, Tân Xã, Thạch Thất, Hà Nội'),
-		   (N'crush','123',	'Crush - Tea&Coffee','crush@gmail.com','097 195 81 85','2H92+RJ Tân Xã, Thạch Thất Hanoi, Vietnam 100000'),
-		   (N'bamipho','123','Bánh mì phố','bamipho@gmail.com','0385 85 2696','Bánh mì Phố thôn 3 , cạnh trọ tuấn cường 2'),
-		   (N'mixue','123','Mixue Tân Xã','	mixue@gmail.com','0931 311 296','Đầu đường 49 - Tân Xã - Thạch Thất - Hà Nội, Hanoi, Vietnam'),
-		   (N'bamimo','123','Bamimo','bamimo@gmail.com','0975 486 919','Bánh mì Bamimo đối diện cây xăng 39'),
-		   (N'comrangnguyenviet','123','Cơm Rang Nguyễn Việt','comrangnguyenviet@gmail.com','035 6721 667','Đối diên cây xăng 39, Thạch Hoà'),
-		   (N'bundau1966','	123','Bún Đậu 1966','bundau1966@gmail.com','097 959 8680','QUÁN BÚN ĐẬU 1966, Tân Xã, Thạch Thất'),
-		   (N'bundaucochang','123','Bún Đậu Cô Chang','bundaucochang@gmail.com','0866 823 822','Đối diện hồ câu Duy Minh, thôn 3, Thạch Hòa'),
-		   (N'ngonquan','123','Ngon Quán','ngonquan@gmail.com','033 765 3888','SN 334 Đường 21, Thạch Hoà, Thạch Thất, Hà Nội 13113'),
-		   (N'nemnuonghunganh','123','Nem Nướng Hùng Anh','nemnuonghunganh@gmail.com','	034 243 6528','	Đối diện cây xăng 39');
+           (N'thai','123456',N'Duy Thái','dduythai.ddt@gmail.com','079 6428 094',N'Cốm Saximi, Thôn 9, Tân Xã, Thạch Thất, Hà Nội'),
+		   (N'moclong',	'123',N'Mộc Long Tân Xã','moclong@gmail.com','0988 948 583',N'Cổng Trường Hai Bà Trưng, Tân Xã, Thạch Thất, Hanoi, Vietnam'),
+		   (N'huong','123456',N'Trần Linh Hương','linhhuong@gmail.com','0353 240 623',N'Cốm Saximi, Thôn 9, Tân Xã, Thạch Thất, Hà Nội'),
+		   (N'crush','123',	N'Crush - Tea&Coffee','crush@gmail.com','097 195 81 85',N'2H92+RJ Tân Xã, Thạch Thất Hanoi, Vietnam 100000'),
+		   (N'bamipho','123',N'Bánh mì phố','bamipho@gmail.com','0385 85 2696',N'Bánh mì Phố thôn 3 , cạnh trọ tuấn cường 2'),
+		   (N'mixue','123',N'Mixue Tân Xã','	mixue@gmail.com','0931 311 296',N'Đầu đường 49 - Tân Xã - Thạch Thất - Hà Nội, Hanoi, Vietnam'),
+		   (N'bamimo','123',N'Bamimo','bamimo@gmail.com','0975 486 919',N'Bánh mì Bamimo đối diện cây xăng 39'),
+		   (N'comrangnguyenviet','123',N'Cơm Rang Nguyễn Việt','comrangnguyenviet@gmail.com','035 6721 667',N'Đối diên cây xăng 39, Thạch Hoà'),
+		   (N'bundau1966','	123',N'Bún Đậu 1966','bundau1966@gmail.com','097 959 8680',N'QUÁN BÚN ĐẬU 1966, Tân Xã, Thạch Thất'),
+		   (N'bundaucochang','123',N'Bún Đậu Cô Chang','bundaucochang@gmail.com','0866 823 822',N'Đối diện hồ câu Duy Minh, thôn 3, Thạch Hòa'),
+		   (N'ngonquan','123',N'Ngon Quán','ngonquan@gmail.com','033 765 3888',N'SN 334 Đường 21, Thạch Hoà, Thạch Thất, Hà Nội 13113'),
+		   (N'nemnuonghunganh','123',N'Nem Nướng Hùng Anh','nemnuonghunganh@gmail.com','034 243 6528',N'Đối diện cây xăng 39');
 		   
 ------ Insert into MenuCategories ------------------------
 INSERT INTO [dbo].[MenuCategories]

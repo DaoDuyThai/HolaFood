@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : discover
     Created on : Mar 3, 2023, 7:55:22 AM
     Author     : Duy Thai
@@ -34,69 +34,7 @@
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-        <!-- Topbar Start -->
-        <div class="container-fluid">
-            <div class="row bg-secondary py-2 px-xl-5">
-                <div class="col-lg-6 d-none d-lg-block">
-                    <div class="d-inline-flex align-items-center">
-                        <a class="text-dark" href="">FAQs</a>
-                        <span class="text-muted px-2">|</span>
-                        <a class="text-dark" href="">Help</a>
-                        <span class="text-muted px-2">|</span>
-                        <a class="text-dark" href="">Support</a>
-                    </div>
-                </div>
-                <div class="col-lg-6 text-center text-lg-right">
-                    <div class="d-inline-flex align-items-center">
-                        <a class="text-dark px-2" href="">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a class="text-dark px-2" href="">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a class="text-dark px-2" href="">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a class="text-dark px-2" href="">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a class="text-dark pl-2" href="">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="row align-items-center py-3 px-xl-5">
-                <div class="col-lg-3 d-none d-lg-block">
-                    <a href="" class="text-decoration-none">
-                        <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">Hola</span>Food</h1>
-                    </a>
-                </div>
-                <div class="col-lg-6 col-6 text-left">
-                    <form action="">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search for products">
-                            <div class="input-group-append">
-                                <span class="input-group-text bg-transparent text-primary">
-                                    <i class="fa fa-search"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-lg-3 col-6 text-right">
-                    <a href="" class="btn border">
-                        <i class="fas fa-heart text-primary"></i>
-                        <span class="badge">0</span>
-                    </a>
-                    <a href="" class="btn border">
-                        <i class="fas fa-shopping-cart text-primary"></i>
-                        <span class="badge">0</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!-- Topbar End -->
+        <%@include file="loginheader.jsp" %>
 
 
         <!-- Navbar Start -->
@@ -109,15 +47,9 @@
                     </a>
                     <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 1;">
                         <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
-                            <a href="" class="nav-item nav-link">Cơm hộp</a>
-                            <a href="" class="nav-item nav-link">Đồ ăn khác</a>
-                            <a href="" class="nav-item nav-link">Đồ ăn vặt</a>
-                            <a href="" class="nav-item nav-link">Đồ uống</a>
-                            <a href="" class="nav-item nav-link">Tráng miệng</a>
-                            <a href="" class="nav-item nav-link">Homemade</a>
-                            <a href="" class="nav-item nav-link">Vỉa hè</a>
-                            <a href="" class="nav-item nav-link">Pizza</a>
-                            <a href="" class="nav-item nav-link">Burger</a>
+                            <c:forEach items="${listMenuCategories}" var="lmc">
+                                <a href="" class="nav-item nav-link">${lmc.name}</a>
+                            </c:forEach>
                         </div>
                     </nav>
                 </div>
@@ -131,8 +63,8 @@
                         </button>
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                             <div class="navbar-nav mr-auto py-0">
-                                <a href="home.jsp" class="nav-item nav-link">Home</a>
-                                <a href="aboutus.html" class="nav-item nav-link">About Us</a>
+                                <a href="home" class="nav-item nav-link">Home</a>
+                                <a href="aboutus.jsp" class="nav-item nav-link">About Us</a>
                                 <a href="discover" class="nav-item nav-link active">Discover</a>
                                 <div class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Available</a>
@@ -141,12 +73,12 @@
                                         <a href="dishes" class="dropdown-item">Dishes</a>
                                     </div>
                                 </div>
-                                <a href="contact.html" class="nav-item nav-link">Contact</a>
+                                <a href="contact.jsp" class="nav-item nav-link">Contact</a>
                             </div>
-                            <div class="navbar-nav ml-auto py-0">
+                            <%-- <div class="navbar-nav ml-auto py-0">
                                 <a href="login.jsp" class="loginButton nav-item nav-link">Sign up/Login</a>
 
-                            </div>
+                            </div> --%>
                         </div>
                     </nav>
                 </div>
@@ -154,14 +86,6 @@
         </div>
         <!-- Navbar End -->
 
-
-        <!-- Page Header Start -->
-        <div class="container-fluid bg-secondary mb-5">
-            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 200px">
-                <h1 class="font-weight-semi-bold text-uppercase mb-3">Discover</h1>
-            </div>
-        </div>
-        <!-- Page Header End -->
 
 
         <!-- Shop Start -->
@@ -410,26 +334,26 @@
                                 <div class="col-md-4 mb-5">
                                     <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
                                     <div class="d-flex flex-column justify-content-start">
-                                        <a class="text-dark mb-2" href="home.jsp"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                                        <a class="text-dark mb-2" href="aboutus.html"><i class="fa fa-angle-right mr-2"></i>About Us</a>
+                                        <a class="text-dark mb-2" href="home"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                                        <a class="text-dark mb-2" href="aboutus.jsp"><i class="fa fa-angle-right mr-2"></i>About Us</a>
                                         <a class="text-dark mb-2" href="discover"><i class="fa fa-angle-right mr-2"></i>Discover</a>
                                         <a class="text-dark mb-2" href="restaurants"><i class="fa fa-angle-right mr-2"></i>Restaurants</a>
                                         <a class="text-dark mb-2" href="dishes"><i
                                                 class="fa fa-angle-right mr-2"></i>Dishes</a>
-                                        <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contact
+                                        <a class="text-dark" href="contact.jsp"><i class="fa fa-angle-right mr-2"></i>Contact
                                             Us</a>
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-5">
                                     <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
                                     <div class="d-flex flex-column justify-content-start">
-                                        <a class="text-dark mb-2" href="home.jsp"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                                        <a class="text-dark mb-2" href="aboutus.html"><i class="fa fa-angle-right mr-2"></i>About Us</a>
+                                        <a class="text-dark mb-2" href="home"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                                        <a class="text-dark mb-2" href="aboutus.jsp"><i class="fa fa-angle-right mr-2"></i>About Us</a>
                                         <a class="text-dark mb-2" href="discover"><i class="fa fa-angle-right mr-2"></i>Discover</a>
                                         <a class="text-dark mb-2" href="restaurants"><i class="fa fa-angle-right mr-2"></i>Restaurants</a>
                                         <a class="text-dark mb-2" href="dishes"><i
                                                 class="fa fa-angle-right mr-2"></i>Dishes</a>
-                                        <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contact
+                                        <a class="text-dark" href="contact.jsp"><i class="fa fa-angle-right mr-2"></i>Contact
                                             Us</a>
                                     </div>
                                 </div>

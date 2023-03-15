@@ -5,9 +5,7 @@
 
 package controller;
 
-import dal.MenuCategoriesDAO;
-import dal.MenuItemsDAO;
-import dal.RestaurantsDAO;
+import dal.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -15,17 +13,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
-import model.MenuCategories;
-import model.MenuItems;
-import model.Restaurants;
+import model.Users;
 
 /**
  *
  * @author Duy Thai
  */
-@WebServlet(name="dishesServlet", urlPatterns={"/dishes"})
-public class dishesServlet extends HttpServlet {
+@WebServlet(name="RegisterServlet", urlPatterns={"/register"})
+public class RegisterServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -42,10 +37,10 @@ public class dishesServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet dishesServlet</title>");  
+            out.println("<title>Servlet RegisterServlet</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet dishesServlet at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet RegisterServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -62,20 +57,7 @@ public class dishesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        MenuItemsDAO menuItem = new MenuItemsDAO();
-        List<MenuItems> listMenuItems = menuItem.getAllMenuItems();
-        request.setAttribute("listMenuItems", listMenuItems);
-        RestaurantsDAO restaurants = new RestaurantsDAO();
-        List<Restaurants> listRestaurants = restaurants.getAllRestaurants();
-        request.setAttribute("listRestaurants", listRestaurants);
-        MenuCategoriesDAO menuCategory = new MenuCategoriesDAO();
-        
-        
-        List<MenuCategories> listMenuCategories = menuCategory.getAllMenuCategories();
-        request.setAttribute("listMenuCategories", listMenuCategories);
-        
-        
-        request.getRequestDispatcher("dishes.jsp").forward(request, response);
+        request.getRequestDispatcher("register.jsp").forward(request, response);
     } 
 
     /** 
@@ -88,7 +70,36 @@ public class dishesServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String repassword = request.getParameter("repassword");
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String phone_number = request.getParameter("phone_number");
+        String address = request.getParameter("address");
+        if(!password.equals(repassword)){
+            request.setAttribute("error", "Password not match");
+            request.getRequestDispatcher("register.jsp").forward(request, response);
+        }else{
+            UserDAO dao = new UserDAO();
+            Users u = dao.checkUserExist(username);
+            if(u==null){
+//                sigup
+                dao.signup(username, password, name, email, phone_number, address);
+                response.sendRedirect("home");
+            }else{
+                
+                request.setAttribute("error", "Username already existed");
+                request.getRequestDispatcher("register.jsp").forward(request, response);
+            }
+            
+            
+        }
+        
+        
+        
+        
+        
     }
 
     /** 

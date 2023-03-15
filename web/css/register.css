@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#Boppee-logo {
+    width: 120px;
+    height: auto;
+}
+
+#head-title {
+    font-size: 30px;
+}
+
+.content-container {
+    width: 100vw;
+    height: 80vh;
+    background-color: #EE4D2D;
+    position: relative;
+}
+
+#left-login-logo {
+    position: absolute;
+}
+
+.login-content {
+    position: absolute;
+    width: 30vw;
+    height: 65vh;
+    border: 1px solid #FFFFFF;
+    border-radius: 8px;
+    padding: 50px;
+    background-color: #FFFFFF;
+    margin-top: 10vh;
+    margin-left: 50vw;
+}
+
+input {
+    height: auto;
+    width: 100%;
+}
+
+#submit-btn {
+    padding: 6px;
+    border: 1px solid #EE4D2D;
+    border-radius: 5px;
+    color: #FFFFFF;
+    background-color: #EE4D2D;
+}
+
+.input-part {
+    margin-bottom: 10px;
+}
+
+#login {
+    margin-top: 10px;
+    text-align: center;
+}
+
+select {
+    height: auto;
+    width: 100%;
+    padding: 2px;
+    text-align: center;
+    border-radius: 5px;
+}

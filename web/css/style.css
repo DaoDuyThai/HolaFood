@@ -49,6 +49,8 @@ html {
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block; }
 
+
+  
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
@@ -7746,3 +7748,5 @@ a.text-dark:hover, a.text-dark:focus {
     transform: translateY(-15px); } }
 
 /*# sourceMappingURL=style.css.map */
+
+

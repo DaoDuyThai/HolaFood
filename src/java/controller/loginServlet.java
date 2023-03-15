@@ -5,9 +5,7 @@
 
 package controller;
 
-import dal.MenuCategoriesDAO;
-import dal.MenuItemsDAO;
-import dal.RestaurantsDAO;
+import dal.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -15,17 +13,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
-import model.MenuCategories;
-import model.MenuItems;
-import model.Restaurants;
+import model.Users;
 
 /**
  *
  * @author Duy Thai
  */
-@WebServlet(name="dishesServlet", urlPatterns={"/dishes"})
-public class dishesServlet extends HttpServlet {
+@WebServlet(name="LoginServlet", urlPatterns={"/login"})
+public class loginServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -42,10 +37,10 @@ public class dishesServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet dishesServlet</title>");  
+            out.println("<title>Servlet LoginServlet</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet dishesServlet at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet LoginServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -62,20 +57,7 @@ public class dishesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        MenuItemsDAO menuItem = new MenuItemsDAO();
-        List<MenuItems> listMenuItems = menuItem.getAllMenuItems();
-        request.setAttribute("listMenuItems", listMenuItems);
-        RestaurantsDAO restaurants = new RestaurantsDAO();
-        List<Restaurants> listRestaurants = restaurants.getAllRestaurants();
-        request.setAttribute("listRestaurants", listRestaurants);
-        MenuCategoriesDAO menuCategory = new MenuCategoriesDAO();
-        
-        
-        List<MenuCategories> listMenuCategories = menuCategory.getAllMenuCategories();
-        request.setAttribute("listMenuCategories", listMenuCategories);
-        
-        
-        request.getRequestDispatcher("dishes.jsp").forward(request, response);
+        request.getRequestDispatcher("login.jsp").forward(request, response);
     } 
 
     /** 
@@ -88,7 +70,16 @@ public class dishesServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        UserDAO dao = new UserDAO();
+        Users a = dao.login(username, password);
+        if(a==null){
+            request.setAttribute("error", "Wrong username or password");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        }else{
+            response.sendRedirect("home");
+        }
     }
 
     /** 

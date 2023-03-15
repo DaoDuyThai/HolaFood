@@ -1,27 +1,25 @@
 <%-- 
-    Document   : home
-    Created on : Mar 1, 2023, 12:30:58 AM
+    Document   : contact
+    Created on : Mar 14, 2023, 11:23:49 PM
     Author     : Duy Thai
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Home Page</title>
+        <meta charset="utf-8">
+        <title>Contact</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="Home Page" name="keywords">
-        <meta content="Home Page" name="description">
+        <meta content="Contact" name="keywords">
+        <meta content="Contact" name="description">
 
         <!-- Favicon -->
         <link href="img/favicon.ico" rel="icon">
 
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-              rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
 
         <!-- Font Awesome -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -33,41 +31,42 @@
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-        
         <%@include file="loginheader.jsp" %>
 
 
         <!-- Navbar Start -->
-        <div class="container-fluid mb-5">
+        <div class="container-fluid">
             <div class="row border-top px-xl-5">
                 <div class="col-lg-3 d-none d-lg-block">
-                    <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100"
-                       data-toggle="collapse" href="#navbar-vertical"
-                       style="height: 65px; margin-top: -1px; padding: 0 30px;">
+                    <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
                         <h6 class="m-0">Categories</h6>
                         <i class="fa fa-angle-down text-dark"></i>
                     </a>
-                    <nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0"
-                         id="navbar-vertical">
+                    <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 1;">
                         <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
-                            <c:forEach items="${listMenuCategories}" var="lmc">
-                                <a href="" class="nav-item nav-link">${lmc.name}</a>
-                            </c:forEach>
+                            <a href="" class="nav-item nav-link">Cơm hộp</a>
+                            <a href="" class="nav-item nav-link">Đồ ăn khác</a>
+                            <a href="" class="nav-item nav-link">Đồ ăn vặt</a>
+                            <a href="" class="nav-item nav-link">Đồ uống</a>
+                            <a href="" class="nav-item nav-link">Tráng miệng</a>
+                            <a href="" class="nav-item nav-link">Homemade</a>
+                            <a href="" class="nav-item nav-link">Vỉa hè</a>
+                            <a href="" class="nav-item nav-link">Pizza</a>
+                            <a href="" class="nav-item nav-link">Burger</a>
                         </div>
                     </nav>
                 </div>
                 <div class="col-lg-9">
                     <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
                         <a href="" class="text-decoration-none d-block d-lg-none">
-                            <h1 class="m-0 display-5 font-weight-semi-bold"><span
-                                    class="text-primary font-weight-bold border px-3 mr-1">Hola</span>Food</h1>
+                            <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">Hola</span>Food</h1>
                         </a>
                         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                             <div class="navbar-nav mr-auto py-0">
-                                <a href="home" class="nav-item nav-link active">Home</a>
+                                <a href="home" class="nav-item nav-link">Home</a>
                                 <a href="aboutus.jsp" class="nav-item nav-link">About Us</a>
                                 <a href="discover" class="nav-item nav-link">Discover</a>
                                 <div class="nav-item dropdown">
@@ -77,7 +76,7 @@
                                         <a href="dishes" class="dropdown-item">Dishes</a>
                                     </div>
                                 </div>
-                                <a href="contact.jsp" class="nav-item nav-link">Contact</a>
+                                <a href="contact.jsp" class="nav-item nav-link active">Contact</a>
                             </div>
                             <%-- <div class="navbar-nav ml-auto py-0">
                                 <a href="login.jsp" class="loginButton nav-item nav-link">Sign up/Login</a>
@@ -85,145 +84,83 @@
                             </div> --%>
                         </div>
                     </nav>
-                    <div id="header-carousel" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active" style="height: 410px;">
-                                <img class="img-fluid" src="img/carousel-1.jpg" alt="Image">
-                                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                                    <div class="p-3" style="max-width: 700px;">
-                                        <h4 class="text-light text-uppercase font-weight-medium mb-3"GIẢM GIÁ 10% CHO ĐƠN HÀNG ĐẦU TIÊN</h4>
-                                            <h3 class="display-4 text-white font-weight-semi-bold mb-4">Tasty Dishes</h3>
-                                            <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item" style="height: 410px;">
-                                <img class="img-fluid" src="img/carousel-2.jpg" alt="Image">
-                                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                                    <div class="p-3" style="max-width: 700px;">
-                                        <h4 class="text-light text-uppercase font-weight-medium mb-3"GIẢM GIÁ 10% CHO ĐƠN HÀNG ĐẦU TIÊN</h4>
-                                            <h3 class="display-4 text-white font-weight-semi-bold mb-4">Reasonable Price</h3>
-                                            <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
-                            <div class="btn btn-dark" style="width: 45px; height: 45px;">
-                                <span class="carousel-control-prev-icon mb-n2"></span>
-                            </div>
-                        </a>
-                        <a class="carousel-control-next" href="#header-carousel" data-slide="next">
-                            <div class="btn btn-dark" style="width: 45px; height: 45px;">
-                                <span class="carousel-control-next-icon mb-n2"></span>
-                            </div>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
         <!-- Navbar End -->
 
 
-        <!-- Featured Start -->
+        <!-- Page Header Start -->
+        <div class="container-fluid bg-secondary mb-5">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+                <h1 class="font-weight-semi-bold text-uppercase mb-3">Contact Us</h1>
+                <div class="d-inline-flex">
+                    <p class="m-0"><a href="">Home</a></p>
+                    <p class="m-0 px-2">-</p>
+                    <p class="m-0">Contact</p>
+                </div>
+            </div>
+        </div>
+        <!-- Page Header End -->
+
+
+        <!-- Contact Start -->
         <div class="container-fluid pt-5">
-            <div class="row px-xl-5 pb-3">
-                <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                    <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
-                        <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
-                        <h5 class="font-weight-semi-bold m-0">Quality Product</h5>
+            <div class="text-center mb-4">
+                <h2 class="section-title px-5"><span class="px-2">Contact For Any Queries</span></h2>
+            </div>
+            <div class="row px-xl-5">
+                <div class="col-lg-7 mb-5">
+                    <div class="contact-form">
+                        <div id="success"></div>
+                        <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                            <div class="control-group">
+                                <input type="text" class="form-control" id="name" placeholder="Your Name"
+                                       required="required" data-validation-required-message="Please enter your name" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group">
+                                <input type="email" class="form-control" id="email" placeholder="Your Email"
+                                       required="required" data-validation-required-message="Please enter your email" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group">
+                                <input type="text" class="form-control" id="subject" placeholder="Subject"
+                                       required="required" data-validation-required-message="Please enter a subject" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group">
+                                <textarea class="form-control" rows="6" id="message" placeholder="Message"
+                                          required="required"
+                                          data-validation-required-message="Please enter your message"></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div>
+                                <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">Send
+                                    Message</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                    <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
-                        <h1 class="fa fa-shipping-fast text-primary m-0 mr-2"></h1>
-                        <h5 class="font-weight-semi-bold m-0">Free Shipping</h5>
+                <div class="col-lg-5 mb-5">
+                    <h5 class="font-weight-semi-bold mb-3">Get In Touch</h5>
+                    <p>Justo sed diam ut sed amet duo amet lorem amet stet sea ipsum, sed duo amet et. Est elitr dolor elitr erat sit sit. Dolor diam et erat clita ipsum justo sed.</p>
+                    <div class="d-flex flex-column mb-3">
+                        <h5 class="font-weight-semi-bold mb-3">Store 1</h5>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Đại học FPT, Thạch Hoà, Thạch Thất, Hà Nội</p>
+                        <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>dduythai.ddt@gmail.com</p>
+                        <p class="mb-2"><i class="fa fa-phone-alt text-primary mr-3"></i>(+84) 79 6428 094</p>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                    <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
-                        <h1 class="fas fa-exchange-alt text-primary m-0 mr-3"></h1>
-                        <h5 class="font-weight-semi-bold m-0">14-Day Return</h5>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                    <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
-                        <h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
-                        <h5 class="font-weight-semi-bold m-0">24/7 Support</h5>
+                    <div class="d-flex flex-column">
+                        <h5 class="font-weight-semi-bold mb-3">Store 2</h5>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Đại học FPT, Thạch Hoà, Thạch Thất, Hà Nội</p>
+                        <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>dduythai.ddt@gmail.com</p>
+                        <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>(+84) 79 6428 094</p>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Featured End -->
-
-
-        <!-- Categories Start -->
-        <div class="container-fluid pt-5">
-            <div class="row px-xl-5 pb-3">
-                <div class="col-lg-4 col-md-6 pb-1">
-                    <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                        <p class="text-right">15 MÓN ĂN</p>
-                        <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                            <img class="img-fluid" src="img/cat-1.jpg" alt="">
-                        </a>
-                        <h5 class="font-weight-semi-bold m-0">CƠM HỘP</h5>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 pb-1">
-                    <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                        <p class="text-right">15 MÓN ĂN</p>
-                        <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                            <img class="img-fluid" src="img/cat-2.jpg" alt="">
-                        </a>
-                        <h5 class="font-weight-semi-bold m-0">ĐỒ ĂN KHÁC</h5>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 pb-1">
-                    <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                        <p class="text-right">15 MÓN ĂN</p>
-                        <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                            <img class="img-fluid" src="img/cat-3.jpg" alt="">
-                        </a>
-                        <h5 class="font-weight-semi-bold m-0">ĐỒ ĂN VẶT</h5>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 pb-1">
-                    <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                        <p class="text-right">15 MÓN ĂN</p>
-                        <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                            <img class="img-fluid" src="img/cat-4.jpg" alt="">
-                        </a>
-                        <h5 class="font-weight-semi-bold m-0">ĐỒ UỐNG</h5>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 pb-1">
-                    <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                        <p class="text-right">15 MÓN ĂN</p>
-                        <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                            <img class="img-fluid" src="img/cat-5.jpg" alt="">
-                        </a>
-                        <h5 class="font-weight-semi-bold m-0">TRÁNG MIỆNG</h5>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 pb-1">
-                    <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                        <p class="text-right">15 MÓN ĂN</p>
-                        <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                            <img class="img-fluid" src="img/cat-6.jpg" alt="">
-                        </a>
-                        <h5 class="font-weight-semi-bold m-0">VỈA HÈ</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Categories End -->
-
-
-
-
-
-        <!-- Products Start -->
-
+        <!-- Contact End -->
 
 
 
