@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,7 +32,13 @@
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-        <%@include file="loginheader.jsp" %>
+        <c:set var="users" value="${requestScope.users}"/>
+        <c:if test="${not empty users.name}">
+            <%@include file="logoutheader.jsp" %>
+        </c:if>
+        <c:if test="${empty users.name}">
+            <%@include file="loginheader.jsp" %>
+        </c:if>
 
 
         <!-- Navbar Start -->
@@ -67,7 +74,7 @@
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                             <div class="navbar-nav mr-auto py-0">
                                 <a href="home" class="nav-item nav-link">Home</a>
-                                <a href="aboutus.jsp" class="nav-item nav-link">About Us</a>
+                                <a href="aboutus" class="nav-item nav-link">About Us</a>
                                 <a href="discover" class="nav-item nav-link">Discover</a>
                                 <div class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Available</a>
@@ -76,7 +83,7 @@
                                         <a href="dishes" class="dropdown-item">Dishes</a>
                                     </div>
                                 </div>
-                                <a href="contact.jsp" class="nav-item nav-link active">Contact</a>
+                                <a href="contact" class="nav-item nav-link active">Contact</a>
                             </div>
                             <%-- <div class="navbar-nav ml-auto py-0">
                                 <a href="login.jsp" class="loginButton nav-item nav-link">Sign up/Login</a>
@@ -183,12 +190,12 @@
                             <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
                             <div class="d-flex flex-column justify-content-start">
                                 <a class="text-dark mb-2" href="home"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                                <a class="text-dark mb-2" href="aboutus.jsp"><i class="fa fa-angle-right mr-2"></i>About Us</a>
+                                <a class="text-dark mb-2" href="aboutus"><i class="fa fa-angle-right mr-2"></i>About Us</a>
                                 <a class="text-dark mb-2" href="discover"><i class="fa fa-angle-right mr-2"></i>Discover</a>
                                 <a class="text-dark mb-2" href="restaurants"><i class="fa fa-angle-right mr-2"></i>Restaurants</a>
                                 <a class="text-dark mb-2" href="dishes"><i
                                         class="fa fa-angle-right mr-2"></i>Dishes</a>
-                                <a class="text-dark" href="contact.jsp"><i class="fa fa-angle-right mr-2"></i>Contact
+                                <a class="text-dark" href="contact"><i class="fa fa-angle-right mr-2"></i>Contact
                                     Us</a>
                             </div>
                         </div>
@@ -196,12 +203,12 @@
                             <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
                             <div class="d-flex flex-column justify-content-start">
                                 <a class="text-dark mb-2" href="home"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                                <a class="text-dark mb-2" href="aboutus.jsp"><i class="fa fa-angle-right mr-2"></i>About Us</a>
+                                <a class="text-dark mb-2" href="aboutus"><i class="fa fa-angle-right mr-2"></i>About Us</a>
                                 <a class="text-dark mb-2" href="discover"><i class="fa fa-angle-right mr-2"></i>Discover</a>
                                 <a class="text-dark mb-2" href="restaurants"><i class="fa fa-angle-right mr-2"></i>Restaurants</a>
                                 <a class="text-dark mb-2" href="dishes"><i
                                         class="fa fa-angle-right mr-2"></i>Dishes</a>
-                                <a class="text-dark" href="contact.jsp"><i class="fa fa-angle-right mr-2"></i>Contact
+                                <a class="text-dark" href="contact"><i class="fa fa-angle-right mr-2"></i>Contact
                                     Us</a>
                             </div>
                         </div>

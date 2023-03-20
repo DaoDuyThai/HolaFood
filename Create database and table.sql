@@ -67,14 +67,3 @@ CREATE TABLE OrderItems (
     price DECIMAL(8,2) NOT NULL,
 );
 
--- Create the Favourite table
-
-CREATE TABLE Favourite (
-   user_id INT NOT NULL,
-   restaurant_id INT,
-   menu_item_id INT,
-   PRIMARY KEY (user_id, restaurant_id, menu_item_id),
-   FOREIGN KEY (user_id) REFERENCES Users(user_id),
-   FOREIGN KEY (restaurant_id) REFERENCES Restaurants(restaurant_id),
-   FOREIGN KEY (menu_item_id) REFERENCES MenuItems(menu_item_id)
-);

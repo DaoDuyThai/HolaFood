@@ -26,12 +26,12 @@
                             <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
                             <div class="d-flex flex-column justify-content-start">
                                 <a class="text-dark mb-2" href="home"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                                <a class="text-dark mb-2" href="aboutus.jsp"><i class="fa fa-angle-right mr-2"></i>About Us</a>
+                                <a class="text-dark mb-2" href="aboutus"><i class="fa fa-angle-right mr-2"></i>About Us</a>
                                 <a class="text-dark mb-2" href="discover"><i class="fa fa-angle-right mr-2"></i>Discover</a>
                                 <a class="text-dark mb-2" href="restaurants"><i class="fa fa-angle-right mr-2"></i>Restaurants</a>
                                 <a class="text-dark mb-2" href="dishes"><i
                                         class="fa fa-angle-right mr-2"></i>Dishes</a>
-                                <a class="text-dark" href="contact.jsp"><i class="fa fa-angle-right mr-2"></i>Contact
+                                <a class="text-dark" href="contact"><i class="fa fa-angle-right mr-2"></i>Contact
                                     Us</a>
                             </div>
                         </div>
@@ -39,12 +39,12 @@
                             <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
                             <div class="d-flex flex-column justify-content-start">
                                 <a class="text-dark mb-2" href="home"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                                <a class="text-dark mb-2" href="aboutus.jsp"><i class="fa fa-angle-right mr-2"></i>About Us</a>
+                                <a class="text-dark mb-2" href="aboutus"><i class="fa fa-angle-right mr-2"></i>About Us</a>
                                 <a class="text-dark mb-2" href="discover"><i class="fa fa-angle-right mr-2"></i>Discover</a>
                                 <a class="text-dark mb-2" href="restaurants"><i class="fa fa-angle-right mr-2"></i>Restaurants</a>
                                 <a class="text-dark mb-2" href="dishes"><i
                                         class="fa fa-angle-right mr-2"></i>Dishes</a>
-                                <a class="text-dark" href="contact.jsp"><i class="fa fa-angle-right mr-2"></i>Contact
+                                <a class="text-dark" href="contact"><i class="fa fa-angle-right mr-2"></i>Contact
                                     Us</a>
                             </div>
                         </div>

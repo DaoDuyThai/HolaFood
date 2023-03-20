@@ -37,6 +37,9 @@
                     <a class="text-dark pl-2" href="">
                         <i class="fab fa-youtube"></i>
                     </a>
+                    <a class="text-dark pl-2 nav-link" href="manager">
+                        Manage Products
+                    </a>
                     <a class="text-dark pl-2" href=""></a>
                     <div class="navbar-nav ml-auto py-0">
                         <a href="<%=request.getContextPath()%>/logout" class="loginButton nav-item nav-link">${users.name}</a>
@@ -52,9 +55,9 @@
                 </a>
             </div>
             <div class="col-lg-6 col-6 text-left">
-                <form action="">
+                <form action="search" method="post">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Tìm kiếm món ăn, đồ uống, nhà hàng...">
+                        <input name="searchName" type="text" class="form-control" placeholder="Tìm kiếm món ăn, đồ uống, nhà hàng...">
                         <div class="input-group-append">
                             <span class="">
                                 <button class="searchicon" type = "submit">Tìm kiếm</button>

@@ -34,7 +34,13 @@
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-        <%@include file="loginheader.jsp" %>
+        <c:set var="users" value="${requestScope.users}"/>
+        <c:if test="${not empty users.name}">
+            <%@include file="logoutheader.jsp" %>
+        </c:if>
+        <c:if test="${empty users.name}">
+            <%@include file="loginheader.jsp" %>
+        </c:if>
 
 
         <!-- Navbar Start -->
@@ -48,7 +54,7 @@
                     <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 1;">
                         <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
                             <c:forEach items="${listMenuCategories}" var="lmc">
-                                <a href="" class="nav-item nav-link">${lmc.name}</a>
+                                <a href="category?category_id=${lmc.category_id}" class="nav-item nav-link">${lmc.name}</a>
                             </c:forEach>
                         </div>
                     </nav>
@@ -64,7 +70,7 @@
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                             <div class="navbar-nav mr-auto py-0">
                                 <a href="home" class="nav-item nav-link">Home</a>
-                                <a href="aboutus.jsp" class="nav-item nav-link">About Us</a>
+                                <a href="aboutus" class="nav-item nav-link">About Us</a>
                                 <a href="discover" class="nav-item nav-link active">Discover</a>
                                 <div class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Available</a>
@@ -73,7 +79,7 @@
                                         <a href="dishes" class="dropdown-item">Dishes</a>
                                     </div>
                                 </div>
-                                <a href="contact.jsp" class="nav-item nav-link">Contact</a>
+                                <a href="contact" class="nav-item nav-link">Contact</a>
                             </div>
                             <%-- <div class="navbar-nav ml-auto py-0">
                                 <a href="login.jsp" class="loginButton nav-item nav-link">Sign up/Login</a>
@@ -91,124 +97,8 @@
         <!-- Shop Start -->
         <div class="container-fluid pt-5">
             <div class="row px-xl-5">
-                <!-- Shop Sidebar Start -->
-                <div class="col-lg-3 col-md-12">
-                    <!-- Price Start -->
-                    <div class="border-bottom mb-4 pb-4">
-                        <h5 class="font-weight-semi-bold mb-4">Filter by price</h5>
-                        <form>
-                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" class="custom-control-input" checked id="price-all">
-                                <label class="custom-control-label" for="price-all">All Price</label>
-                                <span class="badge border font-weight-normal">1000</span>
-                            </div>
-                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" class="custom-control-input" id="price-1">
-                                <label class="custom-control-label" for="price-1">$0 - $100</label>
-                                <span class="badge border font-weight-normal">150</span>
-                            </div>
-                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" class="custom-control-input" id="price-2">
-                                <label class="custom-control-label" for="price-2">$100 - $200</label>
-                                <span class="badge border font-weight-normal">295</span>
-                            </div>
-                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" class="custom-control-input" id="price-3">
-                                <label class="custom-control-label" for="price-3">$200 - $300</label>
-                                <span class="badge border font-weight-normal">246</span>
-                            </div>
-                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" class="custom-control-input" id="price-4">
-                                <label class="custom-control-label" for="price-4">$300 - $400</label>
-                                <span class="badge border font-weight-normal">145</span>
-                            </div>
-                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-                                <input type="checkbox" class="custom-control-input" id="price-5">
-                                <label class="custom-control-label" for="price-5">$400 - $500</label>
-                                <span class="badge border font-weight-normal">168</span>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- Price End -->
-
-                    <!-- Color Start -->
-                    <div class="border-bottom mb-4 pb-4">
-                        <h5 class="font-weight-semi-bold mb-4">Filter by color</h5>
-                        <form>
-                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" class="custom-control-input" checked id="color-all">
-                                <label class="custom-control-label" for="price-all">All Color</label>
-                                <span class="badge border font-weight-normal">1000</span>
-                            </div>
-                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" class="custom-control-input" id="color-1">
-                                <label class="custom-control-label" for="color-1">Black</label>
-                                <span class="badge border font-weight-normal">150</span>
-                            </div>
-                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" class="custom-control-input" id="color-2">
-                                <label class="custom-control-label" for="color-2">White</label>
-                                <span class="badge border font-weight-normal">295</span>
-                            </div>
-                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" class="custom-control-input" id="color-3">
-                                <label class="custom-control-label" for="color-3">Red</label>
-                                <span class="badge border font-weight-normal">246</span>
-                            </div>
-                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" class="custom-control-input" id="color-4">
-                                <label class="custom-control-label" for="color-4">Blue</label>
-                                <span class="badge border font-weight-normal">145</span>
-                            </div>
-                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-                                <input type="checkbox" class="custom-control-input" id="color-5">
-                                <label class="custom-control-label" for="color-5">Green</label>
-                                <span class="badge border font-weight-normal">168</span>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- Color End -->
-
-                    <!-- Size Start -->
-                    <div class="mb-5">
-                        <h5 class="font-weight-semi-bold mb-4">Filter by size</h5>
-                        <form>
-                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" class="custom-control-input" checked id="size-all">
-                                <label class="custom-control-label" for="size-all">All Size</label>
-                                <span class="badge border font-weight-normal">1000</span>
-                            </div>
-                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" class="custom-control-input" id="size-1">
-                                <label class="custom-control-label" for="size-1">XS</label>
-                                <span class="badge border font-weight-normal">150</span>
-                            </div>
-                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" class="custom-control-input" id="size-2">
-                                <label class="custom-control-label" for="size-2">S</label>
-                                <span class="badge border font-weight-normal">295</span>
-                            </div>
-                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" class="custom-control-input" id="size-3">
-                                <label class="custom-control-label" for="size-3">M</label>
-                                <span class="badge border font-weight-normal">246</span>
-                            </div>
-                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" class="custom-control-input" id="size-4">
-                                <label class="custom-control-label" for="size-4">L</label>
-                                <span class="badge border font-weight-normal">145</span>
-                            </div>
-                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-                                <input type="checkbox" class="custom-control-input" id="size-5">
-                                <label class="custom-control-label" for="size-5">XL</label>
-                                <span class="badge border font-weight-normal">168</span>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- Size End -->
-                </div>
-                <!-- Shop Sidebar End -->
-
+                
+                <center>
 
                 <!-- Shop Product Start -->
 
@@ -216,16 +106,7 @@
                     <div class="row pb-3">
                         <div class="col-12 pb-1">
                             <div class="d-flex align-items-center justify-content-between mb-4">
-                                <form action="">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Search by name">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text bg-transparent text-primary">
-                                                <i class="fa fa-search"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </form>
+                                
                                 <div class="dropdown ml-4">
                                     <button class="btn border dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
                                             aria-expanded="false">
@@ -254,7 +135,7 @@
                                         </div>
                                     </div>
                                     <div class="card-footer d-flex justify-content-between bg-light border">
-                                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                        <a href="view?menu_item_id=${o.menu_item_id}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
                                         <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                                     </div>
                                 </div>
@@ -288,7 +169,7 @@
                     </div>
                 </div>
                  <!-- Shop Product End -->
-
+                </center>
 
                 <!-- Restaurants Start -->
                 <div class="container-fluid py-5">
@@ -335,12 +216,12 @@
                                     <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
                                     <div class="d-flex flex-column justify-content-start">
                                         <a class="text-dark mb-2" href="home"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                                        <a class="text-dark mb-2" href="aboutus.jsp"><i class="fa fa-angle-right mr-2"></i>About Us</a>
+                                        <a class="text-dark mb-2" href="aboutus"><i class="fa fa-angle-right mr-2"></i>About Us</a>
                                         <a class="text-dark mb-2" href="discover"><i class="fa fa-angle-right mr-2"></i>Discover</a>
                                         <a class="text-dark mb-2" href="restaurants"><i class="fa fa-angle-right mr-2"></i>Restaurants</a>
                                         <a class="text-dark mb-2" href="dishes"><i
                                                 class="fa fa-angle-right mr-2"></i>Dishes</a>
-                                        <a class="text-dark" href="contact.jsp"><i class="fa fa-angle-right mr-2"></i>Contact
+                                        <a class="text-dark" href="contact"><i class="fa fa-angle-right mr-2"></i>Contact
                                             Us</a>
                                     </div>
                                 </div>
@@ -348,12 +229,12 @@
                                     <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
                                     <div class="d-flex flex-column justify-content-start">
                                         <a class="text-dark mb-2" href="home"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                                        <a class="text-dark mb-2" href="aboutus.jsp"><i class="fa fa-angle-right mr-2"></i>About Us</a>
+                                        <a class="text-dark mb-2" href="aboutus"><i class="fa fa-angle-right mr-2"></i>About Us</a>
                                         <a class="text-dark mb-2" href="discover"><i class="fa fa-angle-right mr-2"></i>Discover</a>
                                         <a class="text-dark mb-2" href="restaurants"><i class="fa fa-angle-right mr-2"></i>Restaurants</a>
                                         <a class="text-dark mb-2" href="dishes"><i
                                                 class="fa fa-angle-right mr-2"></i>Dishes</a>
-                                        <a class="text-dark" href="contact.jsp"><i class="fa fa-angle-right mr-2"></i>Contact
+                                        <a class="text-dark" href="contact"><i class="fa fa-angle-right mr-2"></i>Contact
                                             Us</a>
                                     </div>
                                 </div>

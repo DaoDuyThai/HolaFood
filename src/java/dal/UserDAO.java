@@ -27,7 +27,7 @@ public class UserDAO extends DBContext{
             ps.setString(1, username);
             ps.setString(2, password);
             rs = ps.executeQuery();
-            while(rs.next()){
+            if(rs.next()){
                 return new Users(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
             }
             

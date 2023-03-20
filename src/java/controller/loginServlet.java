@@ -13,6 +13,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.Users;
 
 /**
@@ -74,11 +75,13 @@ public class loginServlet extends HttpServlet {
         String password = request.getParameter("password");
         UserDAO dao = new UserDAO();
         Users a = dao.login(username, password);
-        request.getSession().setAttribute("users", a);
+        
         if(a==null){
             request.setAttribute("error", "Wrong username or password");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }else{
+            HttpSession session = request.getSession();
+            session.setAttribute("users", a);
             response.sendRedirect("home");
         }
     }

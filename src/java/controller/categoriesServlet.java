@@ -6,6 +6,7 @@
 package controller;
 
 import dal.MenuCategoriesDAO;
+import dal.MenuItemsDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,16 +14,18 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.awt.MenuItem;
 import java.util.List;
 import model.MenuCategories;
+import model.MenuItems;
 import model.Users;
 
 /**
  *
  * @author Duy Thai
  */
-@WebServlet(name="homeServlet", urlPatterns={"/home"})
-public class homeServlet extends HttpServlet {
+@WebServlet(name="categoriesServlet", urlPatterns={"/category"})
+public class categoriesServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -39,10 +42,10 @@ public class homeServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet homeServlet</title>");  
+            out.println("<title>Servlet categoriesServlet</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet homeServlet at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet categoriesServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,11 +62,16 @@ public class homeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        String category_id = request.getParameter("category_id");
+        MenuItemsDAO dao = new MenuItemsDAO();
+        List<MenuItems> listMenuItems = dao.getMenuItemsByCategoryID(category_id);
         MenuCategoriesDAO menuCategory = new MenuCategoriesDAO();
         List<MenuCategories> listMenuCategories = menuCategory.getAllMenuCategories();
         request.setAttribute("listMenuCategories", listMenuCategories);
         request.setAttribute("users", (Users) request.getSession().getAttribute("users"));
-        request.getRequestDispatcher("home.jsp").forward(request, response);
+        
+        request.setAttribute("listMenuItems", listMenuItems);
+        request.getRequestDispatcher("discover.jsp").forward(request, response);
     } 
 
     /** 
@@ -76,7 +84,7 @@ public class homeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        request.getRequestDispatcher("home.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /** 

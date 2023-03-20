@@ -19,6 +19,7 @@ import java.util.List;
 import model.MenuCategories;
 import model.MenuItems;
 import model.Restaurants;
+import model.Users;
 
 /**
  *
@@ -73,7 +74,7 @@ public class dishesServlet extends HttpServlet {
         
         List<MenuCategories> listMenuCategories = menuCategory.getAllMenuCategories();
         request.setAttribute("listMenuCategories", listMenuCategories);
-        
+        request.setAttribute("users", (Users) request.getSession().getAttribute("users"));
         
         request.getRequestDispatcher("dishes.jsp").forward(request, response);
     } 

@@ -8,6 +8,7 @@
 <%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
+    
     <!-- Topbar Start -->
     <div class="container-fluid">
         <div class="row bg-secondary py-2 px-xl-5">
@@ -52,9 +53,9 @@
                 </a>
             </div>
             <div class="col-lg-6 col-6 text-left">
-                <form action="">
+                <form action="search" method="post">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Tìm kiếm món ăn, đồ uống, nhà hàng...">
+                        <input name="searchName" type="text" class="form-control" placeholder="Tìm kiếm món ăn, đồ uống, nhà hàng...">
                         <div class="input-group-append">
                             <span class="">
                                 <button class="searchicon" type = "submit">Tìm kiếm</button>
@@ -76,5 +77,6 @@
         </div>
     </div>
     <!-- Topbar End -->
+    
 
 </html>

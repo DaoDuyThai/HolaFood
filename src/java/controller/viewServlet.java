@@ -5,6 +5,8 @@
 
 package controller;
 
+import dal.MenuCategoriesDAO;
+import dal.MenuItemsDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,6 +14,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
+import model.MenuCategories;
+import model.MenuItems;
+import model.Users;
 
 /**
  *
@@ -55,7 +61,19 @@ public class viewServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        MenuCategoriesDAO menuCategory = new MenuCategoriesDAO();
+        List<MenuCategories> listMenuCategories = menuCategory.getAllMenuCategories();
+        request.setAttribute("listMenuCategories", listMenuCategories);
+        request.setAttribute("users", (Users) request.getSession().getAttribute("users"));
+        MenuItemsDAO menuItemDao = new MenuItemsDAO();
+        
+        
+        String menu_item_id = request.getParameter("menu_item_id");
+        MenuItems menuItem = menuItemDao.getMenuItemsByID(menu_item_id);
+        request.setAttribute("menu_item_id", menuItem);
+        
+        
+        request.getRequestDispatcher("view.jsp").forward(request, response);
     } 
 
     /** 
