@@ -201,48 +201,12 @@
                 <div class="col-lg-8 col-md-12">
                     <div class="row">
                         <div class="col-md-4 mb-5">
-                            <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
-                            <div class="d-flex flex-column justify-content-start">
-                                <a class="text-dark mb-2" href="home"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                                <a class="text-dark mb-2" href="aboutus"><i class="fa fa-angle-right mr-2"></i>About Us</a>
-                                <a class="text-dark mb-2" href="discover"><i class="fa fa-angle-right mr-2"></i>Discover</a>
-                                <a class="text-dark mb-2" href="restaurants"><i class="fa fa-angle-right mr-2"></i>Restaurants</a>
-                                <a class="text-dark mb-2" href="dishes"><i
-                                        class="fa fa-angle-right mr-2"></i>Dishes</a>
-                                <a class="text-dark" href="contact"><i class="fa fa-angle-right mr-2"></i>Contact
-                                    Us</a>
-                            </div>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4180.411450813989!2d105.55265584322431!3d21.01973362997215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31345b22d5cab2bd%3A0xb2ecc434d81c1de0!2sHelios%20Billard%20Cafe!5e0!3m2!1svi!2s!4v1679423221682!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                         <div class="col-md-4 mb-5">
-                            <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
-                            <div class="d-flex flex-column justify-content-start">
-                                <a class="text-dark mb-2" href="home"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                                <a class="text-dark mb-2" href="aboutus"><i class="fa fa-angle-right mr-2"></i>About Us</a>
-                                <a class="text-dark mb-2" href="discover"><i class="fa fa-angle-right mr-2"></i>Discover</a>
-                                <a class="text-dark mb-2" href="restaurants"><i class="fa fa-angle-right mr-2"></i>Restaurants</a>
-                                <a class="text-dark mb-2" href="dishes"><i
-                                        class="fa fa-angle-right mr-2"></i>Dishes</a>
-                                <a class="text-dark" href="contact"><i class="fa fa-angle-right mr-2"></i>Contact
-                                    Us</a>
-                            </div>
+                            
                         </div>
-                        <div class="col-md-4 mb-5">
-                            <h5 class="font-weight-bold text-dark mb-4">Newsletter</h5>
-                            <form action="">
-                                <div class="form-group">
-                                    <input type="text" class="form-control border-0 py-4" placeholder="Your Name"
-                                           required="required" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control border-0 py-4" placeholder="Your Email"
-                                           required="required" />
-                                </div>
-                                <div>
-                                    <button class="btn btn-primary btn-block border-0 py-3" type="submit">Subscribe
-                                        Now</button>
-                                </div>
-                            </form>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

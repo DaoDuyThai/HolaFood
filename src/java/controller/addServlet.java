@@ -7,7 +7,6 @@ package controller;
 
 import dal.MenuCategoriesDAO;
 import dal.MenuItemsDAO;
-import dal.RestaurantsDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -17,16 +16,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 import model.MenuCategories;
-import model.MenuItems;
-import model.Restaurants;
 import model.Users;
 
 /**
  *
  * @author Duy Thai
  */
-@WebServlet(name="discoverServlet", urlPatterns={"/discover"})
-public class discoverServlet extends HttpServlet {
+@WebServlet(name="addServlet", urlPatterns={"/add"})
+public class addServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -43,10 +40,10 @@ public class discoverServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet homeServlet</title>");  
+            out.println("<title>Servlet addServlet</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet homeServlet at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet addServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,21 +60,10 @@ public class discoverServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        MenuItemsDAO menuItem = new MenuItemsDAO();
-        List<MenuItems> listMenuItems = menuItem.getTop9MenuItems();
-        request.setAttribute("listMenuItems", listMenuItems);
-        
-        RestaurantsDAO restaurants = new RestaurantsDAO();
-        List<Restaurants> listRestaurants = restaurants.getAllRestaurants();
-        request.setAttribute("listRestaurants", listRestaurants);
-        
         MenuCategoriesDAO menuCategory = new MenuCategoriesDAO();
         List<MenuCategories> listMenuCategories = menuCategory.getAllMenuCategories();
         request.setAttribute("listMenuCategories", listMenuCategories);
-       
-        request.setAttribute("users", (Users) request.getSession().getAttribute("users"));
-        
-        request.getRequestDispatcher("discover.jsp").forward(request, response);
+        request.getRequestDispatcher("add.jsp").forward(request, response);
     } 
 
     /** 
@@ -90,7 +76,18 @@ public class discoverServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        Users u =(Users) request.getSession().getAttribute("users");
+        String name = request.getParameter("name");
+        String description = request.getParameter("description");
+        String item_image = request.getParameter("item_image");
+        int price = Integer.parseInt(request.getParameter("price")); 
+        int category_id = Integer.parseInt(request.getParameter("category_id"));
+        int id = u.getUser_id();
+        MenuItemsDAO menuitemsdao = new MenuItemsDAO();
+        menuitemsdao.insertMenuItem(name, description, item_image, price, category_id, id);
+        
+        request.getRequestDispatcher("manager").forward(request, response);
+        
     }
 
     /** 

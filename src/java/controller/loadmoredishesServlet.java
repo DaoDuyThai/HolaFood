@@ -15,14 +15,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 import model.MenuItems;
-import model.Users;
 
 /**
  *
  * @author Duy Thai
  */
-@WebServlet(name="a", urlPatterns={"/a"})
-public class a extends HttpServlet {
+@WebServlet(name="loadmoredishesServlet", urlPatterns={"/loadmoredishes"})
+public class loadmoredishesServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -39,10 +38,10 @@ public class a extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet a</title>");  
+            out.println("<title>Servlet loadmoredishesServlet</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet a at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet loadmoredishesServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,13 +58,34 @@ public class a extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        Users u =(Users) request.getSession().getAttribute("users");
+        response.setContentType("text/html;charset=UTF-8");
+        String amount = request.getParameter("existed");
+        int iamount = Integer.parseInt(amount);
+        MenuItemsDAO menuItem = new MenuItemsDAO();
+        List<MenuItems> listMenuItems = menuItem.getNext9MenuItems(iamount);
+        PrintWriter out = response.getWriter();
+        for (MenuItems mi : listMenuItems) {
+            out.println("<div class=\"dishes col-lg-4 col-md-6 col-sm-12 pb-1\">\n" +
+"                                <div class=\"card product-item border-0 mb-4\">\n" +
+"                                    <div class=\"card-header product-img position-relative overflow-hidden bg-transparent border p-0\">\n" +
+"                                        <img class=\"img-fluid w-100\" src=\"assets/menuItems_image/"+mi.getItem_image()+"\" alt=\"\">\n" +
+"                                    </div>\n" +
+"                                    <div class=\"card-body border-left border-right text-center p-0 pt-4 pb-3\">\n" +
+"                                        <h6 class=\"text-truncate mb-3\">"+mi.getName()+"</h6>\n" +
+"                                        <div class=\"d-flex justify-content-center\">\n" +
+"                                            <h6>"+mi.getPrice()+"</h6>\n" +
+"                                        </div>\n" +
+"                                    </div>\n" +
+"                                    <div class=\"card-footer d-flex justify-content-between bg-light border\">\n" +
+"                                        <a href=\"view?menu_item_id="+mi.getMenu_item_id()+"\" class=\"btn btn-sm text-dark p-0\"><i class=\"fas fa-eye text-primary mr-1\"></i>View Detail</a>\n" +
+"                                        <a href=\"\" class=\"btn btn-sm text-dark p-0\"><i class=\"fas fa-shopping-cart text-primary mr-1\"></i>Add To Cart</a>\n" +
+"                                    </div>\n" +
+"                                </div>\n" +
+"                            </div>");
+        }
         
-        MenuItemsDAO dao = new MenuItemsDAO();
-        List<MenuItems> list = dao.getMenuItemsByUserID(u.getUser_id());
         
-        request.setAttribute("list", list);
-        request.getRequestDispatcher("manager.jsp").forward(request, response);
+         
     } 
 
     /** 
@@ -78,13 +98,7 @@ public class a extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        Users u =(Users) request.getSession().getAttribute("users");
-        
-        MenuItemsDAO dao = new MenuItemsDAO();
-        List<MenuItems> list = dao.getMenuItemsByUserID(u.getUser_id());
-        
-        request.setAttribute("list", list);
-        request.getRequestDispatcher("manager.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /** 

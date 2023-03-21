@@ -97,78 +97,102 @@
         <!-- Shop Start -->
         <div class="container-fluid pt-5">
             <div class="row px-xl-5">
-                
+
                 <center>
 
-                <!-- Shop Product Start -->
+                    <!-- Shop Product Start -->
 
-                <div class="col-lg-9 col-md-12">
-                    <div class="row pb-3">
-                        <div class="col-12 pb-1">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                
-                                <div class="dropdown ml-4">
-                                    <button class="btn border dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">
-                                        Sort by
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
-                                        <a class="dropdown-item" href="#">Latest</a>
-                                        <a class="dropdown-item" href="#">Popularity</a>
-                                        <a class="dropdown-item" href="#">Best Rating</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-lg-9 col-md-12">
+                        <div class="row pb-3" id="content">
+                            <div class="col-12 pb-1">
+                                <div class="d-flex align-items-center justify-content-between mb-4">
 
-
-                        <c:forEach items="${listMenuItems}" var="o">
-                            <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
-                                <div class="card product-item border-0 mb-4">
-                                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                                        <img class="img-fluid w-100" src="assets/menuItems_image/${o.item_image}" alt="">
-                                    </div>
-                                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                        <h6 class="text-truncate mb-3">${o.name}</h6>
-                                        <div class="d-flex justify-content-center">
-                                            <h6>${o.price}</h6>
+                                    <div class="dropdown ml-4">
+                                        <button class="btn border dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                            Sort by
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
+                                            <a class="dropdown-item" href="#">Latest</a>
+                                            <a class="dropdown-item" href="#">Popularity</a>
+                                            <a class="dropdown-item" href="#">Best Rating</a>
                                         </div>
                                     </div>
-                                    <div class="card-footer d-flex justify-content-between bg-light border">
-                                        <a href="view?menu_item_id=${o.menu_item_id}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                                    </div>
                                 </div>
                             </div>
-                        </c:forEach>
-                        <%-- page navigation --%>
-                        <div class="col-12 pb-1">
+
+                            <c:forEach items="${listMenuItems}" var="o">
+                                <div class="dishes col-lg-4 col-md-6 col-sm-12 pb-1">
+                                    <div class="card product-item border-0 mb-4">
+                                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                            <img class="img-fluid w-100" src="assets/menuItems_image/${o.item_image}" alt="">
+                                        </div>
+                                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                            <h6 class="text-truncate mb-3">${o.name}</h6>
+                                            <div class="d-flex justify-content-center">
+                                                <h6>${o.price}</h6>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer d-flex justify-content-between bg-light border">
+                                            <a href="view?menu_item_id=${o.menu_item_id}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </div>
+                    </div>
+
+                    <%-- page navigation --%>
+                    <div class="col-12 pb-1">
                         <nav aria-label="Page navigation">
-                          <ul class="pagination justify-content-center mb-3">
-                            <li class="page-item disabled">
-                              <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                                <span class="sr-only">Previous</span>
-                              </a>
-                            </li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                              <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                                <span class="sr-only">Next</span>
-                              </a>
-                            </li>
-                          </ul>
+                                <button onclick="loadMore()"><li class="page-item active">LOAD MORE</li></button>
                         </nav>
                     </div>
-                        <%-- page navigation --%>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+                    <script>
+                                    function loadMore() {
+                                        var amount = document.getElementsByClassName("dishes").length;
+                                        $.ajax({
+                                            url: "/holafood/loadmoredishes",
+                                            type: "get", //send it through get method
+                                            data: {
+                                                existed: amount
+                                                
+                                            },
+                                            success: function (data) {
+                                                var row = document.getElementById("content");
+                                                row.innerHTML += data;
+                                            },
+                                            error: function (xhr) {
+                                                //Do Something to handle error
+                                            }
+                                        });
+                                    }
+                                    
+                                    function searchByName(param){
+                                        var searchName = param.value;
+                                        $.ajax({
+                                            url: "/holafood/searchajax",
+                                            type: "get", //send it through get method
+                                            data: {
+                                                searchName: searchName
+                                                
+                                            },
+                                            success: function (data) {
+                                                var row = document.getElementById("content");
+                                                row.innerHTML = data;
+                                            },
+                                            error: function (xhr) {
+                                                //Do Something to handle error
+                                            }
+                                        });
+                                    }
 
-                       
-                    </div>
-                </div>
-                 <!-- Shop Product End -->
+
+                    </script>
+                    <%-- page navigation --%>
+                    <!-- Shop Product End -->
                 </center>
 
                 <!-- Restaurants Start -->
@@ -186,9 +210,9 @@
                                     </div>
                                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                                         <h6 class="text-truncate mb-3">${o.name}</h6>
-                                        
+
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </c:forEach>
@@ -213,48 +237,12 @@
                         <div class="col-lg-8 col-md-12">
                             <div class="row">
                                 <div class="col-md-4 mb-5">
-                                    <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
-                                    <div class="d-flex flex-column justify-content-start">
-                                        <a class="text-dark mb-2" href="home"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                                        <a class="text-dark mb-2" href="aboutus"><i class="fa fa-angle-right mr-2"></i>About Us</a>
-                                        <a class="text-dark mb-2" href="discover"><i class="fa fa-angle-right mr-2"></i>Discover</a>
-                                        <a class="text-dark mb-2" href="restaurants"><i class="fa fa-angle-right mr-2"></i>Restaurants</a>
-                                        <a class="text-dark mb-2" href="dishes"><i
-                                                class="fa fa-angle-right mr-2"></i>Dishes</a>
-                                        <a class="text-dark" href="contact"><i class="fa fa-angle-right mr-2"></i>Contact
-                                            Us</a>
-                                    </div>
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4180.411450813989!2d105.55265584322431!3d21.01973362997215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31345b22d5cab2bd%3A0xb2ecc434d81c1de0!2sHelios%20Billard%20Cafe!5e0!3m2!1svi!2s!4v1679423221682!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                 </div>
                                 <div class="col-md-4 mb-5">
-                                    <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
-                                    <div class="d-flex flex-column justify-content-start">
-                                        <a class="text-dark mb-2" href="home"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                                        <a class="text-dark mb-2" href="aboutus"><i class="fa fa-angle-right mr-2"></i>About Us</a>
-                                        <a class="text-dark mb-2" href="discover"><i class="fa fa-angle-right mr-2"></i>Discover</a>
-                                        <a class="text-dark mb-2" href="restaurants"><i class="fa fa-angle-right mr-2"></i>Restaurants</a>
-                                        <a class="text-dark mb-2" href="dishes"><i
-                                                class="fa fa-angle-right mr-2"></i>Dishes</a>
-                                        <a class="text-dark" href="contact"><i class="fa fa-angle-right mr-2"></i>Contact
-                                            Us</a>
-                                    </div>
+
                                 </div>
-                                <div class="col-md-4 mb-5">
-                                    <h5 class="font-weight-bold text-dark mb-4">Newsletter</h5>
-                                    <form action="">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control border-0 py-4" placeholder="Your Name"
-                                                   required="required" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="email" class="form-control border-0 py-4" placeholder="Your Email"
-                                                   required="required" />
-                                        </div>
-                                        <div>
-                                            <button class="btn btn-primary btn-block border-0 py-3" type="submit">Subscribe
-                                                Now</button>
-                                        </div>
-                                    </form>
-                                </div>
+
                             </div>
                         </div>
                     </div>

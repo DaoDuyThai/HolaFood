@@ -38,13 +38,17 @@
         </style>
     <body>
     <center>
-        <h1>Thêm món ăn</h1>
+        <h1>Chỉnh sửa món ăn</h1>
         <br><!-- comment -->
-        <form action="add" method="post">
-            Tên món ăn: <br><input type="text" name="name" required><br><!-- comment -->
-            Mô tả: <br><textarea name="description" required></textarea> <br>
-            Hình ảnh: <br><input type="text" name="item_image" required> <br>
-            Giá: <br><input type="number" name="price" required><br><!-- comment -->
+        <form action="update" method="post">
+            Tên món ăn: <br>
+            <input type="text" name="name" value="${menuitem.name}" required><br><!-- comment -->
+            Mô tả: <br>
+            <textarea name="description"  required>${menuitem.description}</textarea> <br>
+            Hình ảnh: <br>
+            <input type="text" name="item_image" value="${menuitem.item_image}" required> <br>
+            Giá: <br>
+            <input type="number" name="price" value="${menuitem.price}" required><br><!-- comment -->
             <div class="form-group">
                 <label>Category</label>
                 <select name="category_id" class="form-select" aria-label="Default select example">
@@ -53,7 +57,7 @@
                     </c:forEach>
                 </select>
             </div>
-            <input type="submit" value="Thêm món ăn">
+            <input type="submit" value="Lưu">
         </form>
 
     </center>

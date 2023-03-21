@@ -55,7 +55,7 @@
             <div class="col-lg-6 col-6 text-left">
                 <form action="search" method="post">
                     <div class="input-group">
-                        <input name="searchName" type="text" class="form-control" placeholder="Tìm kiếm món ăn, đồ uống, nhà hàng...">
+                        <input oninput="searchByName(this)" name="searchName" type="text" class="form-control" placeholder="Tìm kiếm món ăn, đồ uống, nhà hàng...">
                         <div class="input-group-append">
                             <span class="">
                                 <button class="searchicon" type = "submit">Tìm kiếm</button>

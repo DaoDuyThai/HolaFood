@@ -1,42 +1,37 @@
-<%-- 
-    Document   : ManagerProduct
-    Created on : Dec 28, 2020, 5:19:02 PM
-    Author     : trinh
---%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Manager</title>
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="Restaurants" name="keywords">
-        <meta content="Restaurants" name="description">
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <title>Manager</title>
+            <meta content="width=device-width, initial-scale=1.0" name="viewport">
+            <meta content="Restaurants" name="keywords">
+            <meta content="Restaurants" name="description">
 
-        <!-- Favicon -->
-        <link href="img/favicon.ico" rel="icon">
+            <!-- Favicon -->
+            <link href="img/favicon.ico" rel="icon">
 
-        <!-- Google Web Fonts -->
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+            <!-- Google Web Fonts -->
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
 
-        <!-- Font Awesome -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+            <!-- Font Awesome -->
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
-        <!-- Libraries Stylesheet -->
-        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+            <!-- Libraries Stylesheet -->
+            <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-        <!-- Customized Bootstrap Stylesheet -->
-        <link href="css/style.css" rel="stylesheet">
-        <style>
-            img{
-                width: 200px;
-                height: 120px;
-            }
-        </style>
-    <body>
+            <!-- Customized Bootstrap Stylesheet -->
+            <link href="css/style.css" rel="stylesheet">
+            <style>
+                img{
+                    width: 200px;
+                    height: 120px;
+                }
+            </style>
+        <body>
         <div class="container">
             <div class="table-wrapper">
                 <div class="table-title">
@@ -45,12 +40,11 @@
                             <h2>Manage <b>Product</b></h2>
                         </div>
                         <div class="col-sm-6">
-                            <a href="#addEmployeeModal"  class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>
-                            <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
+                            <a href="add?user_id=${user.id}"  class="btn btn-success" data-toggle="modal"><i class="material-icons"></i> <span>Add New Product</span></a>
                         </div>
                     </div>
                 </div>
-                
+
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
@@ -83,14 +77,14 @@
                                 </td>
                                 <td>${o.price} VND</td>
                                 <td>
-                                    <a href="#editEmployeeModal"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                    <a href="update?menu_item_id=${o.menu_item_id}"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                     <a href="delete?menu_item_id=${o.menu_item_id}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                 </td>
                             </tr>
                         </c:forEach>
                     </tbody>
                 </table>
-                
+
             </div>
             <a href="home"><button type="button" class="btn btn-primary">Back to home</button>
 
@@ -200,6 +194,31 @@
             </div>
         </div>
     </a>
-    <script src="js/manager.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function () {
+            // Activate tooltip
+            $('[data-toggle="tooltip"]').tooltip();
+
+            // Select/Deselect checkboxes
+            var checkbox = $('table tbody input[type="checkbox"]');
+            $("#selectAll").click(function () {
+                if (this.checked) {
+                    checkbox.each(function () {
+                        this.checked = true;
+                    });
+                } else {
+                    checkbox.each(function () {
+                        this.checked = false;
+                    });
+                }
+            });
+            checkbox.click(function () {
+                if (!this.checked) {
+                    $("#selectAll").prop("checked", false);
+                }
+            });
+        });
+
+    </script>
 </body>
 </html>
