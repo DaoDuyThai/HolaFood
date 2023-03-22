@@ -57,12 +57,15 @@ public class addServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    static int id;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         MenuCategoriesDAO menuCategory = new MenuCategoriesDAO();
         List<MenuCategories> listMenuCategories = menuCategory.getAllMenuCategories();
         request.setAttribute("listMenuCategories", listMenuCategories);
+        Users u =(Users) request.getSession().getAttribute("users");
+        id = u.getUser_id();
         request.getRequestDispatcher("add.jsp").forward(request, response);
     } 
 
@@ -82,7 +85,7 @@ public class addServlet extends HttpServlet {
         String item_image = request.getParameter("item_image");
         int price = Integer.parseInt(request.getParameter("price")); 
         int category_id = Integer.parseInt(request.getParameter("category_id"));
-        int id = u.getUser_id();
+        
         MenuItemsDAO menuitemsdao = new MenuItemsDAO();
         menuitemsdao.insertMenuItem(name, description, item_image, price, category_id, id);
         

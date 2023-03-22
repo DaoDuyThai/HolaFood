@@ -5,7 +5,7 @@
 
 package controller;
 
-import dal.MenuItemsDAO;
+import dal.MenuCategoriesDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,17 +13,16 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import java.util.List;
-import model.MenuItems;
+import model.MenuCategories;
 import model.Users;
 
 /**
  *
  * @author Duy Thai
  */
-@WebServlet(name="managerServlet", urlPatterns={"/manager"})
-public class managerServlet extends HttpServlet {
+@WebServlet(name="cartServlet", urlPatterns={"/cart"})
+public class cartServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -40,10 +39,10 @@ public class managerServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet managerServlet</title>");  
+            out.println("<title>Servlet cartServlet</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet managerServlet at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet cartServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,15 +59,11 @@ public class managerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        Users u =(Users) request.getSession().getAttribute("users");
-        
-        MenuItemsDAO dao = new MenuItemsDAO();
-        List<MenuItems> list = dao.getMenuItemsByUserID(u.getUser_id());
-        
-        
-        
-        request.setAttribute("list", list);
-        request.getRequestDispatcher("manager.jsp").forward(request, response);
+        MenuCategoriesDAO menuCategory = new MenuCategoriesDAO();
+        List<MenuCategories> listMenuCategories = menuCategory.getAllMenuCategories();
+        request.setAttribute("listMenuCategories", listMenuCategories);
+        request.setAttribute("users", (Users) request.getSession().getAttribute("users"));
+        request.getRequestDispatcher("cart.jsp").forward(request, response);
     } 
 
     /** 
@@ -81,14 +76,7 @@ public class managerServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        
-        Users u =(Users) request.getSession().getAttribute("users");
-        
-        MenuItemsDAO dao = new MenuItemsDAO();
-        List<MenuItems> list = dao.getMenuItemsByUserID(u.getUser_id());
-        
-        request.setAttribute("list", list);
-        request.getRequestDispatcher("manager.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /** 
@@ -100,12 +88,4 @@ public class managerServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    
-    public static void main(String[] args) {
-//        MenuItemsDAO dao = new MenuItemsDAO();
-//        List<MenuItems> list = dao.getMenuItemsByUserID();
-//        for (MenuItems menuItems : list) {
-//            System.out.println(menuItems);
-//        }
-    }
 }
