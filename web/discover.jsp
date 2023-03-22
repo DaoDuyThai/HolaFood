@@ -113,31 +113,41 @@
                                             Sort by
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
-                                            <a class="dropdown-item" href="#">Latest</a>
-                                            <a class="dropdown-item" href="#">Popularity</a>
-                                            <a class="dropdown-item" href="#">Best Rating</a>
+                                            <a class="dropdown-item" href="sort?a=0">Giá thấp nhất</a>
+                                            <a class="dropdown-item" href="sort?a=1">Giá cao nhất</a>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <c:forEach items="${listMenuItems}" var="o">
+
+
                                 <div class="dishes col-lg-4 col-md-6 col-sm-12 pb-1">
-                                    <div class="card product-item border-0 mb-4">
-                                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                                            <img class="img-fluid w-100" src="assets/menuItems_image/${o.item_image}" alt="">
-                                        </div>
-                                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                            <h6 class="text-truncate mb-3">${o.name}</h6>
-                                            <div class="d-flex justify-content-center">
-                                                <h6>${o.price}</h6>
+                                    <form method="post" action="cart">
+                                        <input type="hidden" name="menu_item_id" value="${o.menu_item_id}">
+                                        <input type="hidden" name="name" value="${o.name}">
+                                        <input type="hidden" name="item_image" value="${o.item_image}">
+                                        <input type="hidden" name="price" value="${o.price}">
+                                        <input type="hidden" name="quantity" value="1">
+                                        <div class="card product-item border-0 mb-4">
+                                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                                <img class="img-fluid w-100" src="assets/menuItems_image/${o.item_image}" alt="">
+                                            </div>
+                                            <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                                <h6 class="text-truncate mb-3">${o.name}</h6>
+                                                <div class="d-flex justify-content-center">
+                                                    <h6>${o.price}</h6>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer d-flex justify-content-between bg-light border">
+                                                <a href="view?menu_item_id=${o.menu_item_id}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                                <button type="submit" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button>
                                             </div>
                                         </div>
-                                        <div class="card-footer d-flex justify-content-between bg-light border">
-                                            <a href="view?menu_item_id=${o.menu_item_id}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                                        </div>
-                                    </div>
+                                    </form>
+
                                 </div>
                             </c:forEach>
                         </div>
@@ -146,48 +156,48 @@
                     <%-- page navigation --%>
                     <div class="col-12 pb-1">
                         <nav aria-label="Page navigation">
-                                <button onclick="loadMore()"><li class="page-item active">LOAD MORE</li></button>
+                            <button onclick="loadMore()"><li class="page-item active">LOAD MORE</li></button>
                         </nav>
                     </div>
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
                     <script>
-                                    function loadMore() {
-                                        var amount = document.getElementsByClassName("dishes").length;
-                                        $.ajax({
-                                            url: "/holafood/loadmoredishes",
-                                            type: "get", //send it through get method
-                                            data: {
-                                                existed: amount
-                                                
-                                            },
-                                            success: function (data) {
-                                                var row = document.getElementById("content");
-                                                row.innerHTML += data;
-                                            },
-                                            error: function (xhr) {
-                                                //Do Something to handle error
-                                            }
-                                        });
-                                    }
-                                    
-                                    function searchByName(param){
-                                        var searchName = param.value;
-                                        $.ajax({
-                                            url: "/holafood/searchajax",
-                                            type: "get", //send it through get method
-                                            data: {
-                                                searchName: searchName
-                                                
-                                            },
-                                            success: function (data) {
-                                                var row = document.getElementById("content");
-                                                row.innerHTML = data;
-                                            },
-                                            error: function (xhr) {
-                                                //Do Something to handle error
-                                            }
-                                        });
-                                    }
+                                function loadMore() {
+                                    var amount = document.getElementsByClassName("dishes").length;
+                                    $.ajax({
+                                        url: "/holafood/loadmoredishes",
+                                        type: "get", //send it through get method
+                                        data: {
+                                            existed: amount
+
+                                        },
+                                        success: function (data) {
+                                            var row = document.getElementById("content");
+                                            row.innerHTML += data;
+                                        },
+                                        error: function (xhr) {
+                                            //Do Something to handle error
+                                        }
+                                    });
+                                }
+
+                                function searchByName(param) {
+                                    var searchName = param.value;
+                                    $.ajax({
+                                        url: "/holafood/searchajax",
+                                        type: "get", //send it through get method
+                                        data: {
+                                            searchName: searchName
+
+                                        },
+                                        success: function (data) {
+                                            var row = document.getElementById("content");
+                                            row.innerHTML = data;
+                                        },
+                                        error: function (xhr) {
+                                            //Do Something to handle error
+                                        }
+                                    });
+                                }
 
 
                     </script>

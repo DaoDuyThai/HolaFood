@@ -5,6 +5,8 @@
 package controller;
 
 import dal.MenuCategoriesDAO;
+import dal.MenuItemsDAO;
+import dal.RestaurantsDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,20 +14,19 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import model.MenuCategories;
 import model.MenuItems;
+import model.Restaurants;
 import model.Users;
-import model.Item;
 
 /**
  *
  * @author Duy Thai
  */
-@WebServlet(name = "cartServlet", urlPatterns = {"/cart"})
-public class cartServlet extends HttpServlet {
+@WebServlet(name = "sortServlet", urlPatterns = {"/sort"})
+public class sortServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,10 +45,10 @@ public class cartServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet cartServlet</title>");
+            out.println("<title>Servlet sortServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet cartServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet sortServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -62,22 +63,31 @@ public class cartServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    String menu_item_id_static;
-    String name_static;
-    String item_image_static;
-    String price_static;
-    String quantity_static;
-    int id_static;
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String a = request.getParameter("a");
+        int b = Integer.parseInt(a);
+        MenuItemsDAO menuItem = new MenuItemsDAO();
+        List<MenuItems> listMenuItems = new ArrayList<>();
+        if (b == 0) {
+            listMenuItems = menuItem.getAllMenuItemsAsc();
+        } else {
+            listMenuItems = menuItem.getAllMenuItemsDesc();
+        }
+        request.setAttribute("listMenuItems", listMenuItems);
+
+        RestaurantsDAO restaurants = new RestaurantsDAO();
+        List<Restaurants> listRestaurants = restaurants.getAllRestaurants();
+        request.setAttribute("listRestaurants", listRestaurants);
+
         MenuCategoriesDAO menuCategory = new MenuCategoriesDAO();
         List<MenuCategories> listMenuCategories = menuCategory.getAllMenuCategories();
         request.setAttribute("listMenuCategories", listMenuCategories);
+
         request.setAttribute("users", (Users) request.getSession().getAttribute("users"));
 
-        request.getRequestDispatcher("cart.jsp").forward(request, response);
+        request.getRequestDispatcher("discover.jsp").forward(request, response);
     }
 
     /**
@@ -91,43 +101,7 @@ public class cartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        List<Item> cart = (List<Item>) session.getAttribute("cart");
-        if (cart == null) {
-            cart = new ArrayList<Item>();
-            session.setAttribute("cart", cart);
-        }
-
-        String menu_item_id = request.getParameter("menu_item_id");
-        String name = request.getParameter("name");
-        double price = Double.parseDouble(request.getParameter("price"));
-        String item_image = request.getParameter("item_image");
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
-        
-        int id = Integer.parseInt(menu_item_id);
-        
-        boolean productFound = false;
-        
-        for (Item p : cart) {
-            if (p.getMenu_item_id() == id) {
-                p.setQuantity(p.getQuantity() + quantity);
-                productFound = true;
-                break;
-            }
-        }
-
-        if (!productFound) {
-            Item product = new Item();
-            product.setItem_image(menu_item_id);
-            product.setName(name);
-            product.setPrice(price);
-            product.setItem_image(item_image);
-            product.setQuantity(quantity);
-            cart.add(product);
-        }
-//        
-
-        response.sendRedirect("cart.jsp");
+        processRequest(request, response);
     }
 
     /**

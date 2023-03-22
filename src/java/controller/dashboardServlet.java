@@ -5,9 +5,7 @@
 
 package controller;
 
-import dal.MenuCategoriesDAO;
-import dal.MenuItemsDAO;
-import dal.RestaurantsDAO;
+import dal.OrdersDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -16,17 +14,15 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
-import model.MenuCategories;
-import model.MenuItems;
-import model.Restaurants;
+import model.Orders;
 import model.Users;
 
 /**
  *
  * @author Duy Thai
  */
-@WebServlet(name="discoverServlet", urlPatterns={"/discover"})
-public class discoverServlet extends HttpServlet {
+@WebServlet(name="dashboardServlet", urlPatterns={"/dashboard"})
+public class dashboardServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -43,10 +39,10 @@ public class discoverServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet homeServlet</title>");  
+            out.println("<title>Servlet dashboardServlet</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet homeServlet at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet dashboardServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,22 +59,16 @@ public class discoverServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        MenuItemsDAO menuItem = new MenuItemsDAO();
-        List<MenuItems> listMenuItems = menuItem.getTop9MenuItems();
-        request.setAttribute("listMenuItems", listMenuItems);
+        OrdersDAO o = new OrdersDAO();
+        Users u =(Users) request.getSession().getAttribute("users");
         
-        RestaurantsDAO restaurants = new RestaurantsDAO();
-        List<Restaurants> listRestaurants = restaurants.getAllRestaurants();
-        request.setAttribute("listRestaurants", listRestaurants);
         
-        MenuCategoriesDAO menuCategory = new MenuCategoriesDAO();
-        List<MenuCategories> listMenuCategories = menuCategory.getAllMenuCategories();
-        request.setAttribute("listMenuCategories", listMenuCategories);
-       
-        request.setAttribute("users", (Users) request.getSession().getAttribute("users"));
+        List<Orders> list = o.getAllOrderByUserID(""+u.getUser_id());
         
-        request.getRequestDispatcher("discover.jsp").forward(request, response);
-    }
+        
+        request.setAttribute("listorder", list);
+        request.getRequestDispatcher("dashboard.jsp").forward(request, response);
+    } 
 
     /** 
      * Handles the HTTP <code>POST</code> method.

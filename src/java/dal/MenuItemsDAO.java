@@ -45,6 +45,52 @@ public class MenuItemsDAO {
         return list;
     }
     
+    public List<MenuItems> getAllMenuItemsAsc() {
+        List<MenuItems> list = new ArrayList<>();
+        String sql = "select * from MenuItems order by price";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new MenuItems(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getDouble(5),
+                        rs.getInt(6),
+                        rs.getInt(7)));
+
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+    
+    public List<MenuItems> getAllMenuItemsDesc() {
+        List<MenuItems> list = new ArrayList<>();
+        String sql = "select * from MenuItems order by price desc";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new MenuItems(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getDouble(5),
+                        rs.getInt(6),
+                        rs.getInt(7)));
+
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+    
     public List<MenuItems> getTop9MenuItems() {
         List<MenuItems> list = new ArrayList<>();
         String sql = "select top 9 * from MenuItems";

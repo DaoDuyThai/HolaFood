@@ -3,7 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Duy%20Thai/Desktop/HolaFood/src/java/dal/MenuCategoriesDAO.java</file>
+            <file>file:/C:/Users/Duy%20Thai/Desktop/HolaFood/src/java/model/Orders.java</file>
+            <file>file:/C:/Users/Duy%20Thai/Desktop/HolaFood/src/java/controller/managerServlet.java</file>
+            <file>file:/C:/Users/Duy%20Thai/Desktop/HolaFood/src/java/controller/dashboardServlet.java</file>
+            <file>file:/C:/Users/Duy%20Thai/Desktop/HolaFood/src/java/controller/cartServlet.java</file>
+            <file>file:/C:/Users/Duy%20Thai/Desktop/HolaFood/web/cart.jsp</file>
+            <file>file:/C:/Users/Duy%20Thai/Desktop/HolaFood/web/discover.jsp</file>
+            <file>file:/C:/Users/Duy%20Thai/Desktop/HolaFood/src/java/controller/discoverServlet.java</file>
+            <file>file:/C:/Users/Duy%20Thai/Desktop/HolaFood/web/dashboard.jsp</file>
+            <file>file:/C:/Users/Duy%20Thai/Desktop/HolaFood/src/java/model/Item.java</file>
         </group>
     </open-files>
 </project-private>

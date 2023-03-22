@@ -85,5 +85,12 @@ public class Orders {
     public void setDelivery_time(String delivery_time) {
         this.delivery_time = delivery_time;
     }
+
+    @Override
+    public String toString() {
+        return "Orders{" + "order_id=" + order_id + ", customer_id=" + customer_id + ", restaurant_id=" + restaurant_id + ", total_price=" + total_price + ", status=" + status + ", delivery_address=" + delivery_address + ", delivery_time=" + delivery_time + '}';
+    }
+    
+    
     
 }
