@@ -15,7 +15,7 @@ The Holafood website provides the following features:
 ## Getting Started
 To get started with the project, follow these steps:
 
-- Clone the repository or download the zip file.
+- Clone the repository or download the zip file: https://github.com/DuyThaiddt/HolaFood.git
 - Extract the files to a folder of your choice.
 - Create a new database in SQL Server and import the SQL script file located in the "database" folder.
 - Open the project in your favorite IDE (such as Eclipse, IntelliJ, etc.).
