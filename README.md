@@ -25,5 +25,5 @@ To get started with the project, follow these steps:
 - Start the server.
 - Access the web application at http://localhost:8080.
 
-##Conclusion
+## Conclusion
 Holafood is a basic food ordering website that provides essential features for customers and restaurants. The project is developed using JSP, JSTL, Servlet, HTML, CSS, JS, and AJAX technologies, and it can be customized to add more features according to the requirements. If you have any queries or suggestions, feel free to contact me at daoduythai.business@gmail.com.
