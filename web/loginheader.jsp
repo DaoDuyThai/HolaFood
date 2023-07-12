@@ -58,7 +58,7 @@
                         <input oninput="searchByName(this)" name="searchName" type="text" class="form-control" placeholder="Tìm kiếm món ăn, đồ uống, nhà hàng...">
                         <div class="input-group-append">
                             <span class="">
-                                <button class="searchicon" type = "submit">Tìm kiếm</button>
+                                <button class="searchicon btn btn-primary" type = "submit">Tìm kiếm</button>
                             </span>
                         </div>
                     </div>
