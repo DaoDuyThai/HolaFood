@@ -98,15 +98,6 @@ $yiq-contrasted-threshold:  150 !default;
 $yiq-text-dark:             $gray-900 !default;
 $yiq-text-light:            $white !default;
 
-// Characters which are escaped by the escape-svg function
-$escaped-characters: (
-  ("<", "%3c"),
-  (">", "%3e"),
-  ("#", "%23"),
-  ("(", "%28"),
-  (")", "%29"),
-) !default;
-
 
 // Options
 //
@@ -259,15 +250,7 @@ $transition-fade:             opacity .15s linear !default;
 $transition-collapse:         height .35s ease !default;
 
 $embed-responsive-aspect-ratios: () !default;
-$embed-responsive-aspect-ratios: join(
-  (
-    (21 9),
-    (16 9),
-    (4 3),
-    (1 1),
-  ),
-  $embed-responsive-aspect-ratios
-);
+
 
 // Typography
 //
