@@ -4,15 +4,15 @@ HolaFood is a web application project about food ordering website designed to co
 
 ## Screenshots
 
-![Screenshot 1](screenshots/Screenshot1.jpg)
+![Screenshot 1](screenshots/Screenshot1.jpeg)
 
-![Screenshot 2](screenshots/Screenshot2.jpg)
+![Screenshot 2](screenshots/Screenshot2.jpeg)
 
-![Screenshot 3](screenshots/Screenshot3.jpg)
+![Screenshot 3](screenshots/Screenshot3.jpeg)
 
-![Screenshot 4](screenshots/Screenshot4.jpg)
+![Screenshot 4](screenshots/Screenshot4.jpeg)
 
-![Screenshot 5](screenshots/Screenshot5.jpg)
+![Screenshot 5](screenshots/Screenshot5.jpeg)
 
 ## Features
 
