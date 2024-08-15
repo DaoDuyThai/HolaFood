@@ -36,7 +36,7 @@ Follow the steps below to set up the project:
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/DuyThaiddt/HolaFood
+    git clone https://github.com/DaoDuyThai/HolaFood
     ```
 
 2. **Open Netbeans:**
